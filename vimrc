@@ -1,47 +1,45 @@
-"""""""""""" vim config
-
-"""""""""""" vbundle setting
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
+"""" Vundle Settings
+
 " set the runtime path to include Vundle and initialize
+" for default
 set rtp+=~/.vim/bundle/Vundle.vim
+" for dev machine
+" set rtp+=~/sunzhenkai/VimConfig/Vundle.vim
+
+"" for default
 call vundle#begin()
 " alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
+"" for dev machine
+" call vundle#begin('~/sunzhenkai/VimConfig/VimPlugins')
 
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
-
-:" The following are examples of different formats supported.
+" The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
 " plugin on GitHub repo
 Plugin 'tpope/vim-fugitive'
-
 " plugin from http://vim-scripts.org/vim/scripts.html
 " Plugin 'L9'
 " Git plugin not hosted on GitHub
-Plugin 'git://git.wincent.com/command-t.git'
+" Plugin 'git://git.wincent.com/command-t.git'
+Plugin 'wincent/command-t.git'
 
 " git repos on your local machine (i.e. when working on your own plugin)
 " Plugin 'file:///home/gmarik/path/to/plugin'
-
 " The sparkup vim script is in a subdirectory of this repo called vim.
 " Pass the path to set the runtimepath properly.
-
 Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 " Install L9 and avoid a Naming conflict if you've already installed a
 " different version somewhere else.
 " Plugin 'ascenator/L9', {'name': 'newL9'}
 
-
-""""""""""""" MY PLUGIN
-Plugin 'rkulla/pydiction'
+"""" personal plugins
+Plugin 'scrooloose/nerdtree'
 Plugin 'artur-shaik/vim-javacomplete2'
-" Plugin 'klen/python-mode'
-""""""""""""" END
-
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -57,10 +55,28 @@ filetype plugin indent on    " required
 "
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
-"""""""""""" ./vbundle setting
 
 
-"""""""""""" personal setting
+"""" plugin settings
+"" command-t
+let g:CommandTMaxFiles=20000000
+
+
+"" NERDTree
+" hot key
+map <C-n> :NERDTreeToggle<CR>
+
+" 不显示隐藏文件
+let g:NERDTreeHidden=0
+" 过滤: 所有指定文件和文件夹不显示
+let NERDTreeIgnore = ['\.pyc$', '\.swp', '\.swo', '\.vscode', '__pycache__']  
+
+"" vim-javacomplete2
+autocmd FileType java setlocal omnifunc=javacomplete#Complete
+
+
+
+"""" Personal Settings
 set nocompatible
 set backspace=indent,eol,start
 " set mouse=a
@@ -79,4 +95,6 @@ set number
 " 设置{回车自动补全并缩进
 inoremap { {}<ESC>i
 inoremap {<CR> {<CR>}<ESC>O
-"""""""""""" ./personal setting
+
+"" 设置热键
+inoremap jj <ESC>
