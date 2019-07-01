@@ -40,6 +40,11 @@ Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 """" personal plugins
 Plugin 'scrooloose/nerdtree'
 Plugin 'artur-shaik/vim-javacomplete2'
+Plugin 'junegunn/fzf.vim'
+
+"" themes
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'altercation/solarized'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -65,6 +70,11 @@ let g:CommandTMaxFiles=20000000
 "" NERDTree
 " hot key
 map <C-n> :NERDTreeToggle<CR>
+
+"" vim-colors-solarized
+set background=dark
+colorscheme solarized
+
 
 " 不显示隐藏文件
 let g:NERDTreeHidden=0

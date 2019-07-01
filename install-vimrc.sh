@@ -1,8 +1,20 @@
 #!/bin/bash
+set -x
 
 #### download vundle
-git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+if [ ! -e ~/.vim/bundle/Vundle.vim ]; then
+    echo "download Vundle.vim"
+    git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+fi
 
 #### cp vimrc
-cp ~/.vimrc ~/.vimrc-back
+n=1
+while [ -e ~/.vimrc.back${n} ]
+do
+    n=$((n+1))
+done
+mv ~/.vimrc ~/.vimrc.back${n}
 cp vimrc ~/.vimrc
+
+
+vim -c PluginInstall -c q -c q
