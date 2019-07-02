@@ -1,0 +1,2 @@
+# mac vim
+alias vim='mvim -v'

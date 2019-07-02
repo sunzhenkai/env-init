@@ -41,10 +41,17 @@ Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 Plugin 'scrooloose/nerdtree'
 Plugin 'artur-shaik/vim-javacomplete2'
 Plugin 'junegunn/fzf.vim'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+
 
 "" themes
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'altercation/solarized'
+Plugin 'chriskempson/base16-vim'
+Plugin 'chriskempson/base16-iterm2'
+
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
