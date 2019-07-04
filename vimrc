@@ -85,6 +85,7 @@ colorscheme solarized
 
 " 不显示隐藏文件
 let g:NERDTreeHidden=0
+let g:NERDTreeWinSize=42
 " 过滤: 所有指定文件和文件夹不显示
 let NERDTreeIgnore = ['\.pyc$', '\.swp', '\.swo', '\.vscode', '__pycache__']  
 
