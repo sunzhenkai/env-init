@@ -1,2 +1,3 @@
 # mac vim
 alias vim='mvim -v'
+alias ll='ls -lGh'
