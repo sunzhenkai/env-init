@@ -11,7 +11,14 @@ $ git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 
 ```shell
 $ /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-$ brew cask install adoptopenjdk 
+
+# openjdk
+$ brew tap AdoptOpenJDK/openjdk
+$ brew cask install adoptopenjdk8
+# remove
+$ brew cask remove adoptopenjdk8
+
+# others
 $ brew install macvim git maven
 
 ```
