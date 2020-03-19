@@ -1,0 +1,7 @@
+# mac vim
+alias vim='mvim -v'
+alias ll='ls -lGh'
+alias ga='git add'
+alias gc='git commit'
+alias gp='git push'
+alias gl='git pull'

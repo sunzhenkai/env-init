@@ -1,0 +1,9 @@
+#!/bin
+cur_path="${PWD}/$(dirname $0)"
+source ${cur_path}/../lib/tool.sh
+
+echo 'HELLO'
+os="$(tool::os_type)"
+
+
+
