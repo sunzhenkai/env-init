@@ -23,3 +23,10 @@ $ brew install macvim git maven
 
 ```
 
+# Environment
+
+```shell
+# append bash profile 
+$ bash shell/merge-profile
+```
+
