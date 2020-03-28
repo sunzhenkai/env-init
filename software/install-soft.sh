@@ -1,6 +1,9 @@
 #!/bin/bash
 
-set -x
+cur_path="${PWD}/$(dirname $0)"
+source ${cur_path}/../lib/tool.sh
+os="$(tool::os_type)"
+echo "$os"
 
 mvToNext() {
 	n=1
@@ -16,3 +19,21 @@ mvToNext() {
 cp -r software ~/.software
 
 bash ~/.software/install.sh
+
+#### install softwares
+triggerOSXInstall() {
+    brew install tree
+    brew install git
+    brew install tmux
+    brew install macvim
+    brew install wget
+    brew tap AdoptOpenJDK/openjdk && brew cask install adoptopenjdk8
+    brew install maven 
+}
+
+if [ "darwin" == "$os" ]; then
+   triggerOSXInstall 
+else
+   echo "unsupport os type ${os}"
+fi
+
