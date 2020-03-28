@@ -2,8 +2,9 @@
 cur_path="${PWD}/$(dirname $0)"
 source ${cur_path}/../lib/tool.sh
 
-echo 'HELLO'
 os="$(tool::os_type)"
 
-
+for i in ${cur_path}/bash_profile_mac; do
+    echo $i
+done
 
