@@ -1,0 +1,25 @@
+#!/bin
+# set -x
+
+cur_path="$( cd "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
+poj_path="$( cd ${cur_path}/.. >/dev/null 2>&1; pwd -P)"
+source ${poj_path}/lib/tool.sh
+os="$(tool::os_type)"
+
+# merge common profiles
+mergeProfile() {
+    while read line; do 
+        if grep -q "$line" ~/.bash_profile ; then
+            echo "W exists $line"
+        else
+            echo "I append $line"
+            echo "$line" >> ~/.bash_profile
+        fi
+    done 
+} 
+
+# merge profiles for mac
+mergeProfile < ${cur_path}/bash_profile
+[ "$os" == "darwin" ] && mergeProfile < ${cur_path}/bash_profile_mac
+
+echo "export PATH=${poj_path}/bin:"'$PATH' | mergeProfile
