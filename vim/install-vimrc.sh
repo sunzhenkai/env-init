@@ -13,8 +13,8 @@ while [ -e ~/.vimrc.back${n} ]
 do
     n=$((n+1))
 done
-mv ~/.vimrc ~/.vimrc.back${n}
-cp vimrc ~/.vimrc
+[ -e ~/.vimrc ] && mv ~/.vimrc ~/.vimrc.back${n}
+cp vim/vimrc ~/.vimrc
 
 
 vim -c PluginInstall -c q -c q
