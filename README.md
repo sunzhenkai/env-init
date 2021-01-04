@@ -3,6 +3,7 @@
 ```shell
 # 安装vbundle
 $ git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+$ bash vim install-vimrc.sh
 ```
 
 ## Software
@@ -27,7 +28,7 @@ $ brew install macvim git maven
 
 ```shell
 # append bash profile 
-$ bash shell/merge-profile
+$ bash env/merge-profile
 $ source ~/.bash_profile
 ```
 

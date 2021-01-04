@@ -6,8 +6,8 @@ then
 	exit 1
 fi
 
-g++ -o .mkcpp-out `pwd`/${1}
-./.mkcpp-out
+g++ -std=c++11 -o .mkcpp.out `pwd`/${1}
+./.mkcpp.out
 
-rm .mkcpp-out
+rm .mkcpp.out
 
