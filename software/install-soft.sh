@@ -3,7 +3,7 @@
 cur_path="${PWD}/$(dirname $0)"
 source ${cur_path}/../lib/tool.sh
 os="$(tool::os_type)"
-echo "$os"
+echo "OS: $os"
 
 # mvToNext() {
 # 	n=1
@@ -15,6 +15,7 @@ echo "$os"
 
 # [ ! -e software ] && echo "software dirctory not exists" && exit 1
 # [ -e ~/.software ] && echo "~/.software already exists" && mvToNext ~/.software
+[ ! -e ~/.software ] && mkdir ~/.software
 
 # cp -r software ~/.software
 
@@ -22,6 +23,9 @@ echo "$os"
 
 #### install softwares
 triggerOSXInstall() {
+    # local
+    cp -r software/mac/* ~/.software
+    # remote
     brew install tree
     brew install git
     brew install tmux

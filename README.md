@@ -22,6 +22,8 @@ $ brew cask remove adoptopenjdk8
 # others
 $ brew install macvim git maven
 
+# install local software
+$ bash software/install-soft.sh  # install local software & remote by brew
 ```
 
 # Environment
