@@ -31,7 +31,7 @@ triggerOSXInstall() {
     brew install tmux
     brew install macvim
     brew install wget
-    brew tap AdoptOpenJDK/openjdk && brew cask install adoptopenjdk8
+    brew tap AdoptOpenJDK/openjdk && brew install --cask adoptopenjdk8
 }
 
 if [ "darwin" == "$os" ]; then
