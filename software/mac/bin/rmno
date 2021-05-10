@@ -1,0 +1,13 @@
+#!/bin/sh
+# set -x
+
+echo $#
+for arg in "$@"
+do
+    echo "${arg}"
+    fn=$(basename "$arg")
+    pt=$(dirname "$arg")
+    nf=$(echo "$fn" | sed "s/[0-9]*[-.]//")
+    # echo ${nf}
+    mv "${arg}" "${pt}/${nf}"
+done

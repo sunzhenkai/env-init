@@ -25,3 +25,4 @@ alias arcp='arc diff --preview master'
 alias arcl='arc land --onto master'
 export PATH=/Users/$(whoami)/.software/protoc-3.5.1-osx-x86_64/bin:$PATH
 export PATH=/Users/$(whoami)/.software/thrift-0.5.0/bin:$PATH
+export PATH=/Users/$(whoami)/.software/bin:$PATH

@@ -1,0 +1,2 @@
+#!/bin/sh
+zip -rq $1.zip $1
