@@ -84,8 +84,7 @@ map <C-n> :NERDTreeToggle<CR>
 
 "" vim-colors-solarized
 set background=dark
-colorscheme solarized
-"silent! colorscheme solarized
+silent! colorscheme solarized
 
 
 " 不显示隐藏文件
@@ -121,3 +120,5 @@ inoremap {<CR> {<CR>}<ESC>O
 
 "" 设置热键
 inoremap jj <ESC>
+
+set encoding=utf-8
