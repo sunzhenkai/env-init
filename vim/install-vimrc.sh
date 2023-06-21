@@ -19,5 +19,5 @@ if [ -e "${BASE}/vimrc" ]; then
     cp "${BASE}/vimrc" ~/.vimrc
 fi
 #vim -c PluginInstall -c q -c q
-vim  +PluginInstall +qall
 # vim --clean '+source ~/.vimrc' +PluginInstall +qall
+vim  +PluginInstall +qall
