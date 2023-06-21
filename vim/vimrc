@@ -85,6 +85,7 @@ map <C-n> :NERDTreeToggle<CR>
 "" vim-colors-solarized
 set background=dark
 colorscheme solarized
+"silent! colorscheme solarized
 
 
 " 不显示隐藏文件
