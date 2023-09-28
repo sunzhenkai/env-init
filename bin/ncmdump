@@ -91,7 +91,7 @@ if __name__ == '__main__':
         file_list = [args.path]
     elif os.path.exists(args.path):
         file_list = os.listdir(os.path.join(args.path))
-        file_list = list(filter(re.compile(".*ncm"), file_list))
+        file_list = list(filter(re.compile(".*ncm").match, file_list))
     else:
         print('illegal path [path={}]'.format(args.path))
     
