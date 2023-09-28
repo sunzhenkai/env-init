@@ -6,6 +6,7 @@ import struct
 import base64
 import json
 import os
+import re
 import argparse
 # pip3 install pycrypto
 from Crypto.Cipher import AES
@@ -89,7 +90,8 @@ if __name__ == '__main__':
     if os.path.isfile(args.path):
         file_list = [args.path]
     elif os.path.exists(args.path):
-        file_list = os.listdir(os.path.join(args.path, "*.ncm"))
+        file_list = os.listdir(os.path.join(args.path))
+        file_list = list(filter(re.compile(".*ncm"), file_list))
     else:
         print('illegal path [path={}]'.format(args.path))
     
