@@ -95,6 +95,7 @@ if __name__ == '__main__':
     else:
         print('illegal path [path={}]'.format(args.path))
     
+    print('total file size is {}'.format(len(file_list)))
     for file in file_list:
         if os.path.isabs(file):
             dump(file)
