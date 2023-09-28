@@ -1,13 +1,12 @@
 #!/bin/bash
+# 编译并运行单个 c/c++ 源文件文件
 
-if [ ! ${1} ]
-then
+if [ ! ${1} ]; then
 	echo "USAGE: ${0} source-code-file.[c or cpp]"
 	exit 1
 fi
 
-g++ -std=c++11 -o .mkcpp.out `pwd`/${1}
+g++ -std=c++17 -o .mkcpp.out `pwd`/${1}
 ./.mkcpp.out
 
 rm .mkcpp.out
-

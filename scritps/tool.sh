@@ -1,5 +1,4 @@
 # package tool
-
 tool::os_type() {
     local os='unkown'
     if [[ "$OSTYPE" == "linux-gnu" ]]; then

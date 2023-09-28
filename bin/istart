@@ -1,0 +1,3 @@
+#!/bin/bash
+# 以 nohup & background 的方式启动程序
+nohup $1 1>".${1}.log" 2>&1 &

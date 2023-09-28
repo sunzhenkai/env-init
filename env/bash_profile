@@ -1,5 +1,6 @@
-alias sp='source ~/.bash_profile'
 alias ll='ls -lGh'
+
+# git alias
 alias ga='git add'
 alias gaa='git add --all'
 alias gc='git commit'
@@ -16,15 +17,16 @@ alias gck='git checkout'
 alias gckm='git checkout master'
 alias gckb='git checkout -b'
 alias gmm='git merge master'
+
+# mvn alias
 alias mvnp='mvn clean package'
 alias mvnd='mvn clean deploy'
 alias mvnt='mvn dependency:tree'
+
 alias arcf='arc feature'
 alias arcd='arc diff master'
 alias arcp='arc diff --preview master'
 alias arcl='arc land --onto master'
-export PATH=/Users/$(whoami)/.software/protoc-3.5.1-osx-x86_64/bin:$PATH
-export PATH=/Users/$(whoami)/.software/thrift-0.5.0/bin:$PATH
+
 export PATH=/Users/$(whoami)/.software/bin:$PATH
 alias cdh='cd ~/Data'
-alias solo='cd ~/Data/git/solo-kindom/'

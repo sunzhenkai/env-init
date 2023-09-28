@@ -1,13 +1,11 @@
 #!/bin/sh
-# set -x
+# 移除文件前面的数字及空格、-、.
 
 echo $#
-for arg in "$@"
-do
+for arg in "$@"; do
     echo "${arg}"
     fn=$(basename "$arg")
     pt=$(dirname "$arg")
-    nf=$(echo "$fn" | sed "s/[0-9]*[-.]//")
-    # echo ${nf}
+    nf=$(echo "$fn" | sed "s/[0-9]*[ -.]*//")
     mv "${arg}" "${pt}/${nf}"
 done
