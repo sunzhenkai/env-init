@@ -62,9 +62,10 @@ def dump(file_path):
     image_size = f.read(4)
     image_size = struct.unpack('<I', bytes(image_size))[0]
     image_data = f.read(image_size)
-    file_name = f.name.split(
-        "/")[-1].split(".ncm")[0] + '.' + meta_data['format']
-    m = open(os.path.join(os.path.split(file_path)[0], file_name), 'wb')
+    file_name = f.name.split("/")[-1].split(".ncm")[0] + '.' + meta_data['format']
+    target_file_path = os.path.join(os.path.split(file_path)[0], file_name)
+    print('dump file. [src={}, target={}]'.format(file_path, target_file_path))
+    m = open(target_file_path, 'wb')
     chunk = bytearray()
     while True:
         chunk = bytearray(f.read(0x8000))
@@ -73,8 +74,7 @@ def dump(file_path):
             break
         for i in range(1, chunk_length+1):
             j = i & 0xff
-            chunk[i-1] ^= key_box[(key_box[j] +
-                                   key_box[(key_box[j] + j) & 0xff]) & 0xff]
+            chunk[i-1] ^= key_box[(key_box[j] + key_box[(key_box[j] + j) & 0xff]) & 0xff]
         m.write(chunk)
     m.close()
     f.close()
@@ -87,9 +87,9 @@ if __name__ == '__main__':
     args = parser.parse_args()
     file_list = []
     if os.path.isfile(args.path):
-        pass
+        file_list = [args.path]
     elif os.path.exists(args.path):
-        pass
+        file_list = os.listdir(os.path.join(args.path, "*.ncm"))
     else:
         print('illegal path [path={}]'.format(args.path))
     
