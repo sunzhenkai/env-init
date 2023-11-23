@@ -1,12 +1,12 @@
 #!/bin/bash
-BASE=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)
-source "$BASE/scripts/tool.sh"
+_BASE=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)
+source "$_BASE/scripts/tool.sh"
 # set -x
 export ENV_INIT_DIR="$HOME/.env-init"
 export ENV_INIT_ENV_FILE="$ENV_INIT_DIR/env"
 export ENV_INSTALL_DIR="$ENV_INIT_DIR/app"
 export ENV_INSTALL_PACKAGE_DIR="$ENV_INIT_DIR/packages"
-export PATH="$BASE/bin":$PATH
+export PATH="$_BASE/bin":$PATH
 export ENV_INIT_COMMAND=ienv
 
 function EnvInit() {
@@ -21,9 +21,9 @@ function EnvInit() {
     tool::append_env_profile 'export ENV_INIT_ENV_FILE="$ENV_INIT_DIR/env"'
     tool::append_env_profile 'export ENV_INSTALL_DIR="$ENV_INIT_DIR/app"'
     tool::append_env_profile 'export ENV_INSTALL_PACKAGE_DIR="$ENV_INIT_DIR/packages"'
-    tool::append_env_profile "export PATH="$BASE/bin":\$PATH"
+    tool::append_env_profile "export PATH="$_BASE/bin":\$PATH"
 
-    tool::append_env_profile_lines << "$BASE/env/bash_profile"
+    tool::append_env_profile_lines < "$_BASE"/env/bash_profile
 }
 
 EnvInit
