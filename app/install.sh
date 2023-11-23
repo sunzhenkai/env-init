@@ -1,5 +1,4 @@
 #!/bin/bash
-
 set -x
 
 software_dir="${PWD}/$(dirname $0)"

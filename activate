@@ -1,0 +1,13 @@
+#!/bin/bash
+BASE=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)
+# activate example
+# export HOME=/data/zhenkai.sun
+# export ENV_INIT_DIR="$HOME/.env-init"
+# export ENV_INSTALL_DIR="$ENV_INIT_DIR/app"
+# export ENV_INSTALL_PACKAGE_DIR="$ENV_INIT_DIR/packages"
+# export PATH="$BASE/bin":$PATH
+
+function EnvInit() {
+    mkdir -p "${ENV_INSTALL_DIR}"
+    mkdir -p "${ENV_INSTALL_PACKAGE_DIR}"
+}
