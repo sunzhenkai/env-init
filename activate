@@ -1,5 +1,6 @@
 #!/bin/bash
 BASE=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)
+source "$BASE/scripts/tool.sh"
 # activate example
 # export HOME=/data/zhenkai.sun
 # export ENV_INIT_DIR="$HOME/.env-init"
@@ -10,4 +11,5 @@ BASE=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)
 function EnvInit() {
     mkdir -p "${ENV_INSTALL_DIR}"
     mkdir -p "${ENV_INSTALL_PACKAGE_DIR}"
+    [ -e "$HOME_OLD/.bashrc" ] && tool::append_if_not_exists "$HOME_OLD/.bashrc" "alias ${ENV_INIT_COMMAND}=\"source ${ENV_INIT_ENV_FILE}\" "
 }
