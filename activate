@@ -8,6 +8,7 @@ export ENV_INSTALL_DIR="$ENV_INIT_DIR/app"
 export ENV_INSTALL_PACKAGE_DIR="$ENV_INIT_DIR/packages"
 export PATH="$_BASE/bin":$PATH
 export ENV_INIT_COMMAND=ienv
+export ENV_INIT_CODE=$_BASE
 
 function EnvInit() {
     mkdir -p "${ENV_INSTALL_DIR}"
@@ -21,7 +22,8 @@ function EnvInit() {
     tool::append_env_profile 'export ENV_INIT_ENV_FILE="$ENV_INIT_DIR/env"'
     tool::append_env_profile 'export ENV_INSTALL_DIR="$ENV_INIT_DIR/app"'
     tool::append_env_profile 'export ENV_INSTALL_PACKAGE_DIR="$ENV_INIT_DIR/packages"'
-    tool::append_env_profile "export PATH="$_BASE/bin":\$PATH"
+    tool::append_env_profile "export ENV_INIT_CODE=$_BASE"
+    tool::append_env_profile "export PATH=$_BASE/bin:\$PATH"
 
     tool::append_env_profile_lines < "$_BASE"/env/bash_profile
 }
