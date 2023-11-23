@@ -17,6 +17,7 @@ alias gck='git checkout'
 alias gckm='git checkout master'
 alias gckb='git checkout -b'
 alias gmm='git merge master'
+alias gsmu='git submodule update --init'
 
 # mvn alias
 alias mvnp='mvn clean package'
