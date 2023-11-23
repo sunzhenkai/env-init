@@ -23,6 +23,7 @@ function EnvInit() {
     tool::append_env_profile 'export ENV_INSTALL_DIR="$ENV_INIT_DIR/app"'
     tool::append_env_profile 'export ENV_INSTALL_PACKAGE_DIR="$ENV_INIT_DIR/packages"'
     tool::append_env_profile "export ENV_INIT_CODE=$_BASE"
+    tool::append_env_profile "alias envi=cd $_BASE"
     tool::append_env_profile "export PATH=$_BASE/bin:\$PATH"
 
     tool::append_env_profile_lines < "$_BASE"/env/bash_profile
