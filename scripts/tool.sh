@@ -19,13 +19,19 @@ function tool::check_install() {
 
 # tool::append_if_not_exists {file} {text}
 function tool::append_if_not_exists() {
-    (! grep -q "$2" $1)  && echo "text [ $2 ] not exists in file ${1}" && echo "$2" >> $1
+    (! grep -q "$2" $1)  && echo "append [ $2 ] into ${1}" && echo "$2" >> $1
 }
 
 # tool::append_env_profile {text}
 function tool::append_env_profile() {
     [ ! -e "$ENV_INIT_ENV_FILE" ] && touch "$ENV_INIT_ENV_FILE"
     tool::append_if_not_exists "$ENV_INIT_ENV_FILE" "$1"
+}
+
+function tool::append_env_profile_lines() {
+    while read line; do
+        tool::append_env_profile "$line"
+    done
 }
 
 # tool::download {url} {appname} {version}

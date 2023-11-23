@@ -23,10 +23,8 @@ alias mvnp='mvn clean package'
 alias mvnd='mvn clean deploy'
 alias mvnt='mvn dependency:tree'
 
+# arc
 alias arcf='arc feature'
 alias arcd='arc diff master'
 alias arcp='arc diff --preview master'
 alias arcl='arc land --onto master'
-
-export PATH=/Users/$(whoami)/.software/bin:$PATH
-alias cdh='cd ~/Data'
