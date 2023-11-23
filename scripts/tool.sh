@@ -22,6 +22,12 @@ function tool::append_if_not_exists() {
     (! grep -q "$2" $1)  && echo "text [ $2 ] not exists in file ${1}" && echo "$2" >> $1
 }
 
+# tool::append_env_profile {text}
+function tool::append_env_profile() {
+    [ ! -e "$ENV_INIT_ENV_FILE" ] && touch "$ENV_INIT_ENV_FILE"
+    tool::append_if_not_exists "$ENV_INIT_ENV_FILE" "$1"
+}
+
 # tool::download {url} {appname} {version}
 function tool::download() {
     wget -O "$ENV_INSTALL_PACKAGE_DIR/$2-$3" "$1" 

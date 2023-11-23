@@ -1,16 +1,25 @@
 #!/bin/bash
 BASE=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)
 source "$BASE/scripts/tool.sh"
-# activate example
-# export HOME=/data/zhenkai.sun
-# export ENV_INIT_DIR="$HOME/.env-init"
-# export ENV_INSTALL_DIR="$ENV_INIT_DIR/app"
-# export ENV_INSTALL_PACKAGE_DIR="$ENV_INIT_DIR/packages"
-# export PATH="$BASE/bin":$PATH
+set -x
+export ENV_INIT_DIR="$HOME/.env-init"
+export ENV_INIT_ENV_FILE="$ENV_INIT_DIR/env"
+export ENV_INSTALL_DIR="$ENV_INIT_DIR/app"
+export ENV_INSTALL_PACKAGE_DIR="$ENV_INIT_DIR/packages"
+export PATH="$BASE/bin":$PATH
+export ENV_INIT_COMMAND=ienv
 
 function EnvInit() {
     mkdir -p "${ENV_INSTALL_DIR}"
     mkdir -p "${ENV_INSTALL_PACKAGE_DIR}"
     [ -e "$HOME_OLD/.bashrc" ] && tool::append_if_not_exists "$HOME_OLD/.bashrc" "alias ${ENV_INIT_COMMAND}=\"source ${ENV_INIT_ENV_FILE}\" "
     [ -e "$HOME_OLD/.bash_profile" ] && tool::append_if_not_exists "$HOME_OLD/.bash_profile" "alias ${ENV_INIT_COMMAND}=\"source ${ENV_INIT_ENV_FILE}\" "
+
+    # init env file
+    tool::append_env_profile "export HOME=\"$HOME/.env-init\""
+    tool::append_env_profile 'export ENV_INIT_DIR="$HOME/.env-init"'
+    tool::append_env_profile 'export ENV_INIT_ENV_FILE="$ENV_INIT_DIR/env"'
+    tool::append_env_profile 'export ENV_INSTALL_DIR="$ENV_INIT_DIR/app"'
+    tool::append_env_profile 'export ENV_INSTALL_PACKAGE_DIR="$ENV_INIT_DIR/packages"'
+    tool::append_env_profile "export PATH="$BASE/bin":\$PATH"
 }

@@ -1,4 +1,11 @@
 #!/bin/bash
 BASE=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)
 echo "[InstallApp] Install. [app=${1}, version=${2}, dest=${ENV_INIT_DIR}]"
-bash "${BASE}/../app/${1}" ${2}
+SCRIPT= "${BASE}/../app/${1}"
+
+if [ -e "$SCRIPT" ]; then
+    bash "${BASE}/../app/${1}" ${2}
+else
+    echo "[InstallApp] Failed, app not found."
+    exit 1
+fi
