@@ -12,4 +12,5 @@ function EnvInit() {
     mkdir -p "${ENV_INSTALL_DIR}"
     mkdir -p "${ENV_INSTALL_PACKAGE_DIR}"
     [ -e "$HOME_OLD/.bashrc" ] && tool::append_if_not_exists "$HOME_OLD/.bashrc" "alias ${ENV_INIT_COMMAND}=\"source ${ENV_INIT_ENV_FILE}\" "
+    [ -e "$HOME_OLD/.bash_profile" ] && tool::append_if_not_exists "$HOME_OLD/.bash_profile" "alias ${ENV_INIT_COMMAND}=\"source ${ENV_INIT_ENV_FILE}\" "
 }
