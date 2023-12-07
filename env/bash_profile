@@ -29,3 +29,6 @@ alias arcf='arc feature'
 alias arcd='arc diff master'
 alias arcp='arc diff --preview master'
 alias arcl='arc land --onto master'
+
+# others
+alias rmf='rm -f'
