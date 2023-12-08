@@ -1,32 +1,8 @@
 #!/bin/bash
-_BASE=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)
-source "$_BASE/scripts/tool.sh"
-# set -x
-export ENV_INIT_DIR="$HOME/.env-init"
-export ENV_INIT_ENV_FILE="$ENV_INIT_DIR/env"
-export ENV_INSTALL_DIR="$ENV_INIT_DIR/app"
-export ENV_INSTALL_PACKAGE_DIR="$ENV_INIT_DIR/packages"
-export PATH="$_BASE/bin":$PATH
-export ENV_INIT_COMMAND=ienv
-export ENV_INIT_CODE=$_BASE
-
-function EnvInit() {
-    mkdir -p "${ENV_INSTALL_DIR}"
-    mkdir -p "${ENV_INSTALL_PACKAGE_DIR}"
-    [ -e "$HOME_OLD/.bashrc" ] && tool::append_if_not_exists "$HOME_OLD/.bashrc" "alias ${ENV_INIT_COMMAND}=\"source ${ENV_INIT_ENV_FILE}\" "
-    [ -e "$HOME_OLD/.bash_profile" ] && tool::append_if_not_exists "$HOME_OLD/.bash_profile" "alias ${ENV_INIT_COMMAND}=\"source ${ENV_INIT_ENV_FILE}\" "
-
-    # init env file
-    tool::append_env_profile "export HOME=\"$HOME\""
-    tool::append_env_profile 'export ENV_INIT_DIR="$HOME/.env-init"'
-    tool::append_env_profile 'export ENV_INIT_ENV_FILE="$ENV_INIT_DIR/env"'
-    tool::append_env_profile 'export ENV_INSTALL_DIR="$ENV_INIT_DIR/app"'
-    tool::append_env_profile 'export ENV_INSTALL_PACKAGE_DIR="$ENV_INIT_DIR/packages"'
-    tool::append_env_profile "export ENV_INIT_CODE=$_BASE"
-    tool::append_env_profile "alias envi=\"cd $_BASE\""
-    tool::append_env_profile "export PATH=$_BASE/bin:\$PATH"
-
-    tool::append_env_profile_lines < "$_BASE"/env/bash_profile
-}
+git submodule update --init
+BASE=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)
+source "$BASE/scripts/tool.sh"
+source "$BASE/init.sh"
 
 EnvInit
+InitEnvSource
