@@ -1,9 +1,5 @@
 # Descript
-
-重装系统后，配置及软件初始化，包括
-
-- vim 配置
-- 软件
+Tools for initialize your favorite environment.
 
 # Vim
 
@@ -33,11 +29,4 @@ $ brew install macvim git maven
 $ bash software/install-soft.sh  # install local software & remote by brew
 ```
 
-# Environment
-
-```shell
-# append bash profile 
-$ bash env/merge-profile
-$ source ~/.bash_profile
-```
 
