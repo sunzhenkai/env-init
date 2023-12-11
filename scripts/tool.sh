@@ -11,7 +11,7 @@ function tool::os_type() {
 }
 
 function tool::check_install() {
-    if [ -z "$NV_INIT_DIR" ]; then
+    if [ -z "$ENV_INIT_DIR" ]; then
         return 1
     fi
     return 0
