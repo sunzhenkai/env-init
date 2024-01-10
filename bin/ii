@@ -1,11 +1,21 @@
 #!/bin/bash
 BASE=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)
-echo "[InstallApp] Install. [app=${1}, version=${2}, dest=${ENV_INIT_DIR}]"
-SCRIPT="${BASE}/../app/${1}"
+APP=${1}
+SCRIPT="${BASE}/../app/${APP}"
 
-if [ -e "$SCRIPT" ]; then
-    bash "${BASE}/../app/${1}" ${2}
+function usage() {
+    cat <<EOF
+usage: ii <app> [<args>]
+EOF
+}
+
+if [ "$APP" = "" ]; then
+    usage
+    exit 1 
+elif [ -e "$SCRIPT" ]; then
+    echo "[InstallApp] Install. [app=${APP}, version=${2}, dest=${ENV_INIT_DIR}]"
+    bash "${BASE}/../app/${APP}" ${2}
 else
-    echo "[InstallApp] Failed, app not found."
+    echo "[InstallApp] Failed, app not found. [app=${APP}]"
     exit 1
 fi

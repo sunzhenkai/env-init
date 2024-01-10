@@ -7,3 +7,4 @@ source "$BASE/init.sh"
 ExportEnvs
 EnvInit
 InitEnvSource
+InitEnvCommand
