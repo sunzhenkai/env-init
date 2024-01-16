@@ -10,10 +10,10 @@ fi
 
 #### cp vimrc
 n=1
-while [ -e ~/.vimrc.back${n} ]
-do
+while [ -e ~/.vimrc.back${n} ]; do
     n=$((n+1))
 done
+
 if [ -e "${BASE}/vimrc" ]; then
     [ -e ~/.vimrc ] && mv ~/.vimrc ~/.vimrc.back${n}
     cp "${BASE}/vimrc" ~/.vimrc

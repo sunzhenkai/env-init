@@ -13,8 +13,8 @@ if [ "$APP" = "" ]; then
     usage
     exit 1 
 elif [ -e "$SCRIPT" ]; then
-    echo "[InstallApp] Install. [app=${APP}, version=${2}, dest=${ENV_INIT_DIR}]"
-    bash "${BASE}/../app/${APP}" ${2}
+    echo "[InstallApp] Install. [app=${APP}, arguments=\"${*:2}\", dest=${ENV_INIT_DIR}]"
+    bash "${BASE}/../app/${APP}" ${*:2}
 else
     echo "[InstallApp] Failed, app not found. [app=${APP}]"
     exit 1

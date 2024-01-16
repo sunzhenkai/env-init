@@ -1,0 +1,22 @@
+#!/bin/bash
+echo "[vim] arguments: $*"
+
+function usage() {
+    cat <<EOF
+Usage: ii vim [arguments]
+
+Arguments
+    -c  config
+EOF
+}
+
+function config() {
+    echo ""
+}
+
+while getopts ":c" opt; do
+    case $opt in
+        c) config ;;
+        *) usage ;;
+    esac
+done
