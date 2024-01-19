@@ -1,7 +1,6 @@
 #!/bin/bash
 BASE=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)
 source "${BASE}/../scripts/tool.sh"
-set -x
 echo "[vim] Run. [arguments='$*']"
 
 function usage() {
