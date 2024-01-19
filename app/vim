@@ -1,5 +1,8 @@
 #!/bin/bash
-echo "[vim] arguments: $*"
+BASE=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)
+source "${BASE}/../scripts/tool.sh"
+set -x
+echo "[vim] Run. [arguments='$*']"
 
 function usage() {
     cat <<EOF
@@ -11,12 +14,35 @@ EOF
 }
 
 function config() {
-    echo ""
+    echo "[vim::config] Run config."
+    #### download vundle
+    if [ ! -e ~/.vim/bundle/Vundle.vim ]; then
+        echo "[vim::config] Download Vundle.vim."
+        git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+    fi
+
+    #### cp vimrc
+    VIMRC_FROM="$BASE/vim.data/vimrc"
+    VIMRC_TO="$HOME/.vimrc"
+    if ! tool::is_same_file "$VIMRC_FROM" "$VIMRC_TO"; then
+        n=1
+        while [ -e "${VIMRC_TO}.back${n}" ]; do
+            n=$((n + 1))
+        done
+        if [ -e "$VIMRC_TO" ]; then
+           mv "$VIMRC_TO" "${VIMRC_TO}.back${n}"
+        fi
+        cp "$VIMRC_FROM" "$VIMRC_TO"
+    fi
+
+    #vim -c PluginInstall -c q -c q
+    # vim --clean '+source ~/.vimrc' +PluginInstall +qall
+    vim +PluginInstall +qall
 }
 
 while getopts ":c" opt; do
     case $opt in
-        c) config ;;
-        *) usage ;;
+    c) config ;;
+    *) usage ;;
     esac
 done

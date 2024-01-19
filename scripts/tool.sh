@@ -1,3 +1,22 @@
+# common tools
+function tool::is_same_file() {
+    if ! command -v vim > /dev/null 2>&1; then
+        echo 'program md5sum not exits'
+        return 1
+    fi
+    if [ -e "$1" -a -e "$2" ]; then
+        r1=$(md5sum "$1" | awk '{print $1}')
+        r2=$(md5sum "$2" | awk '{print $1}')
+        if [ $r1 = $r2 ]; then 
+            return 0
+        else
+            return 1
+        fi
+    else
+        return 1
+    fi
+}
+
 # package tool
 function tool::os_type() {
     local os='unkown'
