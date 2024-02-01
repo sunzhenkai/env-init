@@ -25,8 +25,11 @@ function tool::os_type() {
     elif [[ "$OSTYPE" == "darwin"* ]]; then
         os='darwin'
     fi
-
     echo ${os}
+}
+
+function tool::cpu_arch() {
+    echo $(uname -m)
 }
 
 function tool::check_install() {
@@ -76,7 +79,7 @@ function tool::tar_extract() {
 # tool::tar_extract {appname} {version}
 function tool::zip_extract() {
     mkdir -p "$ENV_INSTALL_DIR/$1-$2"
-    unzip -j "$ENV_INSTALL_PACKAGE_DIR/$1-$2" -d "$ENV_INSTALL_DIR/$1-$2"
+    unzip -oj "$ENV_INSTALL_PACKAGE_DIR/$1-$2" -d "$ENV_INSTALL_DIR/$1-$2"
 }
 
 # tool::append_path {appname} {version} {subpath}

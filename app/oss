@@ -10,16 +10,32 @@ function usage() {
 Usage: ii $APP [arguments]
 
 Arguments
-    -c  config
+    -i install
+    -c config
 EOF
+exit 1
 }
 
 function install() {
+    set -x
     echo "[$APP::${FUNCNAME[0]}] Run."
-    DOWNLOAD_URL="https://gosspublic.alicdn.com/ossutil/${VERSION}/ossutil-v${VERSION}-linux-amd64.zip"
+    os=$(tool::os_type)
+    [[ "$os" == "darwin" ]] && os=mac
+    DOWNLOAD_URL="https://gosspublic.alicdn.com/ossutil/${VERSION}/ossutil-v${VERSION}-${os}-$(tool::cpu_arch).zip"
     tool::download "$DOWNLOAD_URL" OSS "$VERSION"
     tool::zip_extract OSS "$VERSION"
     tool::append_binary_path OSS "$VERSION" ""
 }
 
-install
+function config() {
+    ossutil config
+}
+
+while getopts ":ci" opt; do
+    case $opt in
+        i) install ;;
+        c) config ;;
+        *) usage ;;
+    esac
+done
+
