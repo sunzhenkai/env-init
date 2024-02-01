@@ -51,10 +51,10 @@ Plugin 'davidhalter/jedi-vim'
 
 
 "" themes
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'altercation/solarized'
-Plugin 'chriskempson/base16-vim'
-Plugin 'chriskempson/base16-iterm2'
+"Plugin 'altercation/vim-colors-solarized'
+"Plugin 'altercation/solarized'
+"Plugin 'chriskempson/base16-vim'
+"Plugin 'chriskempson/base16-iterm2'
 
 
 " All of your Plugins must be added before the following line
@@ -83,8 +83,8 @@ let g:CommandTMaxFiles=20000000
 map <C-n> :NERDTreeToggle<CR>
 
 "" vim-colors-solarized
-set background=dark
-silent! colorscheme solarized
+"set background=dark
+"silent! colorscheme solarized
 
 
 " 不显示隐藏文件
