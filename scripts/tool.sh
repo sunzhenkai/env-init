@@ -32,6 +32,13 @@ function tool::cpu_arch() {
     echo $(uname -m)
 }
 
+function tool::cpu_arch_alias() {
+    declare -A CPU_ARCH_ALIAS=(
+        ["x86_64"]=amd64
+    )
+    echo ${CPU_ARCH_ALIAS["$1"]}
+}
+
 function tool::check_install() {
     if [ -z "$ENV_INIT_DIR" ]; then
         return 1

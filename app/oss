@@ -19,6 +19,7 @@ exit 1
 function install() {
     echo "[$APP::${FUNCNAME[0]}] Run."
     os=$(tool::os_type)
+    cpu_arch=$(tool::cpu_arch_alias tool::cpu_arch)
     [[ "$os" == "darwin" ]] && os=mac
     DOWNLOAD_URL="https://gosspublic.alicdn.com/ossutil/${VERSION}/ossutil-v${VERSION}-${os}-$(tool::cpu_arch).zip"
     tool::download "$DOWNLOAD_URL" OSS "$VERSION"
