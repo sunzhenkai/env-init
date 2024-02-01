@@ -1,0 +1,25 @@
+#!/bin/bash
+APP=$(basename "$0")
+VERSION=1.7.19
+_BASE=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)
+source "${_BASE}/../scripts/tool.sh"
+echo "[vim] Run. [arguments='$*']"
+
+function usage() {
+    cat <<EOF
+Usage: ii $APP [arguments]
+
+Arguments
+    -c  config
+EOF
+}
+
+function install() {
+    echo "[$APP::${FUNCNAME[0]}] Run."
+    DOWNLOAD_URL="https://gosspublic.alicdn.com/ossutil/${VERSION}/ossutil-v${VERSION}-linux-amd64.zip"
+    tool::download "$DOWNLOAD_URL" OSS "$VERSION"
+    tool::zip_extract OSS "$VERSION"
+    tool::append_binary_path OSS "$VERSION" ""
+}
+
+install

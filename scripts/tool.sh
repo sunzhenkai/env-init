@@ -73,6 +73,12 @@ function tool::tar_extract() {
     tar -xf "$ENV_INSTALL_PACKAGE_DIR/$1-$2" --strip-components=1 -C "$ENV_INSTALL_DIR/$1-$2"
 }
 
+# tool::tar_extract {appname} {version}
+function tool::zip_extract() {
+    mkdir -p "$ENV_INSTALL_DIR/$1-$2"
+    unzip -j "$ENV_INSTALL_PACKAGE_DIR/$1-$2" -d "$ENV_INSTALL_DIR/$1-$2"
+}
+
 # tool::append_path {appname} {version} {subpath}
 function tool::append_binary_path() {
     binary_path="$ENV_INSTALL_DIR/$1-$2/$3"
