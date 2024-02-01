@@ -1,0 +1,41 @@
+#!/bin/bash
+APP=$(basename "$0")
+VERSION=1.7.19
+_BASE=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)
+source "${_BASE}/../scripts/tool.sh"
+echo "[vim] Run. [arguments='$*']"
+
+function usage() {
+    cat <<EOF
+Usage: ii $APP [arguments]
+
+Arguments
+    -i install
+    -c config
+EOF
+exit 1
+}
+
+function install() {
+    set -x
+    echo "[$APP::${FUNCNAME[0]}] Run."
+    os=$(tool::os_type)
+    [[ "$os" == "darwin" ]] && os=mac
+    DOWNLOAD_URL="https://gosspublic.alicdn.com/ossutil/${VERSION}/ossutil-v${VERSION}-${os}-$(tool::cpu_arch).zip"
+    tool::download "$DOWNLOAD_URL" OSS "$VERSION"
+    tool::zip_extract OSS "$VERSION"
+    tool::append_binary_path OSS "$VERSION" ""
+}
+
+function config() {
+    ossutil config
+}
+
+while getopts ":ci" opt; do
+    case $opt in
+        i) install ;;
+        c) config ;;
+        *) usage ;;
+    esac
+done
+
