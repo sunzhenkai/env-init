@@ -36,7 +36,12 @@ function tool::cpu_arch_alias() {
     declare -A CPU_ARCH_ALIAS=(
         ["x86_64"]=amd64
     )
-    echo ${CPU_ARCH_ALIAS["$1"]}
+    als=${CPU_ARCH_ALIAS["$1"]}
+    if [[ -z "$als" ]]; then
+        echo "$1"
+    else
+        echo "$als"
+    fi
 }
 
 function tool::check_install() {
