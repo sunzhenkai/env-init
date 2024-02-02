@@ -31,7 +31,6 @@ function config() {
     ossutil config
 }
 
-set -x
 while getopts ":ci" opt; do
     case $opt in
         i) install ;;
