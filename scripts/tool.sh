@@ -1,13 +1,13 @@
 # common tools
 function tool::is_same_file() {
-    if ! command -v vim > /dev/null 2>&1; then
+    if ! command -v vim >/dev/null 2>&1; then
         echo 'program md5sum not exits'
         return 1
     fi
     if [ -e "$1" -a -e "$2" ]; then
         r1=$(md5sum "$1" | awk '{print $1}')
         r2=$(md5sum "$2" | awk '{print $1}')
-        if [ $r1 = $r2 ]; then 
+        if [ $r1 = $r2 ]; then
             return 0
         else
             return 1
@@ -53,7 +53,7 @@ function tool::check_install() {
 
 # tool::append_if_not_exists {file} {text}
 function tool::append_if_not_exists() {
-    (! grep -q "$2" $1)  && echo "append [ $2 ] into ${1}" && echo "$2" >> $1
+    (! grep -q "$2" $1) && echo "append [ $2 ] into ${1}" && echo "$2" >>$1
 }
 
 # tool::append_to_env_profile {text}
@@ -72,26 +72,9 @@ function tool::append_to_env_profile_lines() {
 # tool::append_to_profiles {text}
 function tool::append_to_profiles() {
     profiles='.bashrc .bash_profile .zshrc'
-    for i in $profiles; do 
+    for i in $profiles; do
         [ -e "$HOME/$i" ] && tool::append_if_not_exists "$HOME/$i" "$1"
     done
-}
-
-# tool::download {url} {appname} {version}
-function tool::download() {
-    wget -O "$ENV_INSTALL_PACKAGE_DIR/$2-$3" "$1" 
-}
-
-# tool::tar_extract {appname} {version}
-function tool::tar_extract() {
-    mkdir -p "$ENV_INSTALL_DIR/$1-$2"
-    tar -xf "$ENV_INSTALL_PACKAGE_DIR/$1-$2" --strip-components=1 -C "$ENV_INSTALL_DIR/$1-$2"
-}
-
-# tool::tar_extract {appname} {version}
-function tool::zip_extract() {
-    mkdir -p "$ENV_INSTALL_DIR/$1-$2"
-    unzip -oj "$ENV_INSTALL_PACKAGE_DIR/$1-$2" -d "$ENV_INSTALL_DIR/$1-$2"
 }
 
 # tool::append_path {appname} {version} {subpath}
@@ -100,4 +83,52 @@ function tool::append_binary_path() {
     env_file="$ENV_INIT_DIR/env"
     [ ! -e "$env_file" ] && touch "$env_file"
     tool::append_if_not_exists "$ENV_INIT_DIR/env" "export PATH=$binary_path:\$PATH"
+}
+
+########## download & build ##########
+
+# tool::get_package_dir {appname} {version} {stage}
+function tool::get_package_dir() {
+    echo "$ENV_INSTALL_PACKAGE_DIR/$3/$1-$2"
+}
+
+# tool::get_extract_dir {appname} {version} {stage}
+function tool::get_extract_dir() {
+    echo "$ENV_INSTALL_DIR/$3/$1-$2"
+}
+
+# tool::get_install_dir {appname} {version}
+function tool::get_install_dir() {
+    echo "$ENV_INSTALL_DIR/$1-$2"
+}
+
+function tool::get_root_install_dir() {
+    echo "$ENV_INSTALL_DIR"
+}
+
+# tool::download {url} {appname} {version} 
+function tool::download() {
+    dest=$(tool::get_package_dir $2 $3 download)
+    [ -e "$dest" ] && echo "[$2] skip download [version=$3, dest=$dest]" && return
+    mkdir -p "$ENV_INSTALL_PACKAGE_DIR/download/"
+    wget -O "$dest" "$1"
+    echo "[$2] downloading done. [version=$3, dest=$dest]"
+}
+
+# tool::tar_extract {appname} {version} {stage}
+function tool::tar_extract() {
+    from=$(tool::get_package_dir $1 $2 download)
+    dest=$(tool::get_extract_dir $1 $2 $3)
+    echo "[$1] extract [dest=${dest}]"
+    mkdir -p "$dest"
+    tar -xf "$from" --strip-components=1 -C "$dest"
+}
+
+# tool::tar_extract {appname} {version} {stage}
+function tool::zip_extract() {
+    from=$(tool::get_package_dir $1 $2 download)
+    dest=$(tool::get_extract_dir $1 $2 $3)
+    echo "[$1] extract [dest=${dest}]"
+    mkdir -p "$dest"
+    unzip -oj "$from" -d "$dest"
 }
