@@ -15,3 +15,4 @@ Tools for initialize your favorite environment.
 ## Features
 - build from source
 - prebuild & upload & download
+- resolve dependencies
