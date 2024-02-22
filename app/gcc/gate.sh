@@ -34,13 +34,14 @@ function build() {
     install_dir=$(tool::get_install_dir $APP $VERSION)
     cd "$source_dir" || exit 1
     ./contrib/download_prerequisites
+    # multilib: for cross-platform compile
     ./configure \
         --enable-bootstrap \
         --enable-languages=c,c++,fortran,lto \
         --enable-shared \
         --enable-threads=posix \
         --enable-checking=release \
-        --enable-multilib \
+        --disable-multilib \
         --with-system-zlib \
         --disable-libunwind-exceptions \
         --enable-gnu-unique-object \

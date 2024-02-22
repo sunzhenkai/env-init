@@ -28,6 +28,20 @@ function clean() {
     echo "clean done"
 }
 
+function path() {
+    APP=""
+    SUBPATH=""
+    while getopts ":a:s:" opt; do
+        echo $opt
+        case $opt in
+        a) APP="$OPTARG" ;;
+        s) SUBPATH="$OPTARG" ;;
+        esac
+    done
+    [ -z "$APP" ] && echo "app not specified" && exit 1
+    tool::append_binary_path $APP $SUBPATH
+}
+
 case $APP in
 "") usage && exit 1 ;;
 ls)
@@ -36,6 +50,8 @@ info)
     info; exit 0 ;;
 clean)
     clean; exit 0 ;;
+path)
+    path ${*:2}; exit 0 ;;
 *) ;;
 esac
 
