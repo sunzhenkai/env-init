@@ -28,7 +28,7 @@ function install() {
     DOWNLOAD_URL="https://gosspublic.alicdn.com/ossutil/${VERSION}/ossutil-v${VERSION}-${os}-${cpu_arch}.zip"
     tool::download "$DOWNLOAD_URL" $APP "$VERSION"
     tool::zip_extract $APP "$VERSION" install
-    tool::append_binary_path $APP "$VERSION"
+    tool::append_binary_path $APP
     tool::update_install_link $APP $VERSION
 }
 
