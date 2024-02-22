@@ -32,7 +32,6 @@ function path() {
     APP=""
     SUBPATH=""
     while getopts ":a:s:" opt; do
-        echo $opt
         case $opt in
         a) APP="$OPTARG" ;;
         s) SUBPATH="$OPTARG" ;;
