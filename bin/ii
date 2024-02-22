@@ -13,25 +13,29 @@ EOF
 
 function info() {
     cat <<EOF
-    ROOT_DIR=$ENV_INIT_DIR
-    ENV_INIT_ENV_FILE=$ENV_INIT_ENV_FILE
-    ENV_INSTALL_DIR=$ENV_INSTALL_DIR
-    ENV_INSTALL_PACKAGE_DIR=$ENV_INSTALL_PACKAGE_DIR
-    ENV_INIT_CODE=$ENV_INIT_CODE
-    ROOT_INSTALL_DIR=$(tool::get_root_install_dir)
+ROOT_DIR=$ENV_INIT_DIR
+ENV_INIT_ENV_FILE=$ENV_INIT_ENV_FILE
+ENV_INSTALL_DIR=$ENV_INSTALL_DIR
+ENV_INSTALL_PACKAGE_DIR=$ENV_INSTALL_PACKAGE_DIR
+ENV_INIT_CODE=$ENV_INIT_CODE
+ROOT_INSTALL_DIR=$(tool::get_root_install_dir)
+PATH=$PATH
 EOF
+}
+
+function clean() {
+    echo "clean ..."
+    echo "clean done"
 }
 
 case $APP in
 "") usage && exit 1 ;;
 ls)
-    for i in $(ls "$BASE/../app/"); do echo $i; done
-    exit 0
-    ;;
+    for i in $(ls "$BASE/../app/"); do echo $i; done; exit 0 ;;
 info)
-    info
-    exit 0
-    ;;
+    info; exit 0 ;;
+clean)
+    clean; exit 0 ;;
 *) ;;
 esac
 
