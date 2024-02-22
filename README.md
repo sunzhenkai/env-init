@@ -10,6 +10,7 @@ Tools for initialize your favorite environment.
 ## Apps To Support
 - gcc/g++
 - gdb
+- bazel
 
 ## Features
 - build from source

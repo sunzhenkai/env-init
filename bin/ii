@@ -1,4 +1,5 @@
 #!/bin/bash
+# set -x
 BASE=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)
 APP=${1}
 SCRIPT="${BASE}/../app/${APP}"
@@ -6,17 +7,26 @@ source "${BASE}/../scripts/tool.sh"
 
 function usage() {
     cat <<EOF
-usage: ii <app> [<args>]
+usage: ii [app|command] [args]
 EOF
 }
 
-if [ "$APP" = "" ]; then
-    usage
-    exit 1 
-elif [ -e "$SCRIPT" ]; then
-    echo "[InstallApp] Install. [app=${APP}, arguments='${*:2}', dest=${ENV_INIT_DIR}]"
-    bash "${BASE}/../app/${APP}" ${*:2}
-else
+case $APP in
+    "") usage && exit 1 ;;
+    ls) for i in $(ls "$BASE/../app/"); do echo $i; done; exit 0 ;;
+    *) ;;
+esac
+
+# presence check 
+if [ ! -e "$SCRIPT" ]; then
     echo "[InstallApp] Failed, app not found. [app=${APP}]"
     exit 1
+fi
+
+echo "[InstallApp] Install. [app=${APP}, arguments='${*:2}', dest=${ENV_INIT_DIR}]"
+export APP=$APP
+if [ -e "$SCRIPT/gate.sh" ]; then
+    bash "${BASE}/../app/${APP}/gate.sh" ${*:2}
+else
+    bash "${BASE}/../app/${APP}" ${*:2}
 fi

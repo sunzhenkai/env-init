@@ -21,7 +21,7 @@ function config() {
     fi
 
     #### cp vimrc
-    VIMRC_FROM="$BASE/vim.data/vimrc"
+    VIMRC_FROM="$BASE/../data/vim.data/vimrc"
     VIMRC_TO="$HOME/.vimrc"
     if ! tool::is_same_file "$VIMRC_FROM" "$VIMRC_TO"; then
         n=1
