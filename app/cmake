@@ -8,5 +8,5 @@ VERSION='3.27.8'
 DOWNLOAD_URL="https://github.com/Kitware/CMake/releases/download/v${VERSION}/cmake-${VERSION}-linux-x86_64.tar.gz"
 
 tool::download $DOWNLOAD_URL CMAKE $VERSION
-tool::tar_extract CMAKE $VERSION
+tool::tar_extract CMAKE $VERSION install
 tool::append_binary_path CMAKE $VERSION bin

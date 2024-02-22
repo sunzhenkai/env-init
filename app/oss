@@ -23,8 +23,8 @@ function install() {
     [[ "$os" == "darwin" ]] && os=mac
     DOWNLOAD_URL="https://gosspublic.alicdn.com/ossutil/${VERSION}/ossutil-v${VERSION}-${os}-${cpu_arch}.zip"
     tool::download "$DOWNLOAD_URL" OSS "$VERSION"
-    tool::zip_extract OSS "$VERSION"
-    tool::append_binary_path OSS "$VERSION" ""
+    tool::zip_extract OSS "$VERSION" install
+    tool::append_binary_path OSS "$VERSION"
 }
 
 function config() {

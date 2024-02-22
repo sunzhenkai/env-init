@@ -33,7 +33,8 @@ function build() {
     source_dir=$(tool::get_extract_dir $APP $VERSION build)
     install_dir=$(tool::get_install_dir $APP $VERSION)
     cd "$source_dir" || exit 1
-    ./configure --with-gmp="$(tool::get_root_install_dir)/gmp" \
+    ./configure \
+        --with-gmp="$(tool::get_root_install_dir)/gmp" \
         --with-mpfr="$(tool::get_root_install_dir)/mpfr" \
         --prefix="$install_dir"
     make -j
