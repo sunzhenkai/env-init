@@ -32,7 +32,7 @@ function build() {
     ./configure --prefix="$install_dir"
     make -j
     make install -j
-    ln -s "$install_dir" "$(tool::get_root_install_dir)/$APP"
+    tool::update_install_link $APP $VERSION
     exit 0
 }
 

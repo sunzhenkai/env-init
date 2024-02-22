@@ -77,9 +77,13 @@ function tool::append_to_profiles() {
     done
 }
 
+function tool::get_root_install_dir() {
+    echo "$ENV_INSTALL_DIR/install"
+}
+
 # tool::append_path {appname} {version} {subpath}
 function tool::append_binary_path() {
-    binary_path="$ENV_INSTALL_DIR/$1-$2/$3"
+    binary_path="$(tool::get_root_install_dir)/$1-$2/$3"
     env_file="$ENV_INIT_DIR/env"
     [ ! -e "$env_file" ] && touch "$env_file"
     tool::append_if_not_exists "$ENV_INIT_DIR/env" "export PATH=$binary_path:\$PATH"
@@ -99,11 +103,12 @@ function tool::get_extract_dir() {
 
 # tool::get_install_dir {appname} {version}
 function tool::get_install_dir() {
-    echo "$ENV_INSTALL_DIR/$1-$2"
+    echo "$(tool::get_root_install_dir)/$1-$2"
 }
 
-function tool::get_root_install_dir() {
-    echo "$ENV_INSTALL_DIR"
+# tool::update_install_link {appname} {version}
+function tool::update_install_link() {
+    ln -s "$(tool::get_root_install_dir)/$1-$2" "$(tool::get_root_install_dir)/$1"
 }
 
 # tool::download {url} {appname} {version} 
@@ -117,6 +122,7 @@ function tool::download() {
 
 # tool::tar_extract {appname} {version} {stage}
 function tool::tar_extract() {
+    [ -n "$stage" ] && echo "[tool::tar_extract] stage not specified" && return 1
     from=$(tool::get_package_dir $1 $2 download)
     dest=$(tool::get_extract_dir $1 $2 $3)
     echo "[$1] extract [dest=${dest}]"
@@ -126,6 +132,7 @@ function tool::tar_extract() {
 
 # tool::tar_extract {appname} {version} {stage}
 function tool::zip_extract() {
+    [ -n "$stage" ] && echo "[tool::zip_extract] stage not specified" && return 1
     from=$(tool::get_package_dir $1 $2 download)
     dest=$(tool::get_extract_dir $1 $2 $3)
     echo "[$1] extract [dest=${dest}]"
