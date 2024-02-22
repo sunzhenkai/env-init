@@ -3,11 +3,10 @@ APP=$(basename "$0")
 VERSION=1.7.19
 _BASE=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)
 source "${_BASE}/../scripts/tool.sh"
-echo "[vim] Run. [arguments='$*']"
 
 function usage() {
     cat <<EOF
-Usage: ii $APP [arguments]
+Usage: ii $APP [Args]
 
 Arguments
     -i install
@@ -16,15 +15,21 @@ EOF
 exit 1
 }
 
+if [ $# = 0 ]; then
+    usage
+    exit 1
+fi
+
 function install() {
     echo "[$APP::${FUNCNAME[0]}] Run."
     os=$(tool::os_type)
     cpu_arch=$(tool::cpu_arch_alias $(tool::cpu_arch))
     [[ "$os" == "darwin" ]] && os=mac
     DOWNLOAD_URL="https://gosspublic.alicdn.com/ossutil/${VERSION}/ossutil-v${VERSION}-${os}-${cpu_arch}.zip"
-    tool::download "$DOWNLOAD_URL" OSS "$VERSION"
-    tool::zip_extract OSS "$VERSION" install
-    tool::append_binary_path OSS "$VERSION"
+    tool::download "$DOWNLOAD_URL" $APP "$VERSION"
+    tool::zip_extract $APP "$VERSION" install
+    tool::append_binary_path $APP "$VERSION"
+    tool::update_install_link $APP $VERSION
 }
 
 function config() {

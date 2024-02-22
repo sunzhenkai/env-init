@@ -106,6 +106,11 @@ function tool::get_install_dir() {
     echo "$(tool::get_root_install_dir)/$1-$2"
 }
 
+# tool::update_install_link {appname} {version}
+function tool::update_install_link() {
+    ln -s "$(tool::get_root_install_dir)/$1-$2" "$(tool::get_root_install_dir)/$1"
+}
+
 # tool::download {url} {appname} {version} 
 function tool::download() {
     dest=$(tool::get_package_dir $2 $3 download)
