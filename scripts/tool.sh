@@ -111,7 +111,7 @@ function tool::download() {
     dest=$(tool::get_package_dir $2 $3 download)
     [ -e "$dest" ] && echo "[$2] skip download [version=$3, dest=$dest]" && return
     mkdir -p "$ENV_INSTALL_PACKAGE_DIR/download/"
-    wget -O "$dest" "$1"
+    wget --no-check-certificate -O "$dest" "$1"
     echo "[$2] downloading done. [version=$3, dest=$dest]"
 }
 
