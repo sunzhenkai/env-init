@@ -19,7 +19,7 @@ EOF
 }
 
 function install() {
-    echo "[$APP] Install [version=$VERSION]"
+    echo "[$APP] Install from pre-build binary is not support [version=$VERSION]"
 }
 
 function clean() {
