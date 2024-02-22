@@ -9,5 +9,5 @@ DOWNLOAD_URL="https://github.com/Kitware/CMake/releases/download/v${VERSION}/cma
 
 tool::download $DOWNLOAD_URL $APP $VERSION
 tool::tar_extract $APP $VERSION install
-tool::append_binary_path $APP $VERSION bin
+tool::append_binary_path $APP bin
 tool::update_install_link $APP $VERSION

@@ -6,7 +6,7 @@ source "${_BASE}/../../scripts/tool.sh"
 [ ! tool::check_install ] && exit 1
 
 # basic information
-VERSION='14.1'
+VERSION='13.2.0'
 
 # functions
 function usage() {
@@ -27,15 +27,33 @@ function clean() {
 }
 
 function build() {
-    DOWNLOAD_URL="https://ftp.gnu.org/gnu/gdb/gdb-$VERSION.tar.gz"
+    DOWNLOAD_URL="https://mirrors.tuna.tsinghua.edu.cn/gnu/gcc/gcc-$VERSION/gcc-$VERSION.tar.xz"
     tool::download $DOWNLOAD_URL $APP $VERSION
     tool::tar_extract $APP $VERSION build
     source_dir=$(tool::get_extract_dir $APP $VERSION build)
     install_dir=$(tool::get_install_dir $APP $VERSION)
     cd "$source_dir" || exit 1
+    ./contrib/download_prerequisites
+    # multilib: for cross-platform compile
     ./configure \
-        --with-gmp="$(tool::get_root_install_dir)/gmp" \
-        --with-mpfr="$(tool::get_root_install_dir)/mpfr" \
+        --enable-bootstrap \
+        --enable-languages=c,c++,fortran,lto \
+        --enable-shared \
+        --enable-threads=posix \
+        --enable-checking=release \
+        --disable-multilib \
+        --with-system-zlib \
+        --disable-libunwind-exceptions \
+        --enable-gnu-unique-object \
+        --enable-linker-build-id \
+        --with-gcc-major-version-only \
+        --with-linker-hash-style=gnu \
+        --with-default-libstdcxx-abi=gcc4-compatible \
+        --enable-plugin \
+        --enable-initfini-array \
+        --disable-libmpx \
+        --enable-gnu-indirect-function \
+        --with-tune=generic \
         --prefix="$install_dir"
     make -j
     make install -j
