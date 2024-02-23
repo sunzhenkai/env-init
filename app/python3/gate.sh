@@ -6,15 +6,17 @@ source "${_BASE}/../../scripts/tool.sh"
 [ ! tool::check_install ] && exit 1
 
 # basic information
-VERSION='14.1'
+VERSION='3.12.2'
 
 # functions
 function usage() {
     cat <<EOF
-Usage: ii gdb [args]
+Usage: ii $APP [args]
 
 Args
     -i  install
+    -b  build from source
+    -v  set version
 EOF
 }
 
@@ -27,17 +29,13 @@ function clean() {
 }
 
 function build() {
-    DOWNLOAD_URL="https://ftp.gnu.org/gnu/gdb/gdb-$VERSION.tar.gz"
+    DOWNLOAD_URL="https://www.python.org/ftp/python/$VERSION/Python-$VERSION.tar.xz"
     tool::download $DOWNLOAD_URL $APP $VERSION
     tool::tar_extract $APP $VERSION build
     source_dir=$(tool::get_extract_dir $APP $VERSION build)
     install_dir=$(tool::get_install_dir $APP $VERSION)
     cd "$source_dir" || exit 1
-    ./configure \
-        --with-gmp="$(tool::get_root_install_dir)/gmp" \
-        --with-mpfr="$(tool::get_root_install_dir)/mpfr" \
-        --with-python="$(tool::get_root_install_dir)/python3/bin/python3" \
-        --prefix="$install_dir"
+    ./configure --with-pydebug --prefix="$install_dir"
     make -j
     make install -j
     tool::update_install_link $APP $VERSION
