@@ -36,7 +36,7 @@ function build() {
     ./configure \
         --with-gmp="$(tool::get_root_install_dir)/gmp" \
         --with-mpfr="$(tool::get_root_install_dir)/mpfr" \
-        --with-python \
+        --with-python="$(tool::get_root_install_dir)/python3/bin/python3" \
         --prefix="$install_dir"
     make -j
     make install -j
