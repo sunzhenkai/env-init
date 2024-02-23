@@ -29,7 +29,7 @@ function build() {
     source_dir=$(tool::get_extract_dir $APP $VERSION build)
     install_dir=$(tool::get_install_dir $APP $VERSION)
     cd "$source_dir" || exit 1
-    gmp_path="$(tool::get_install_dir)/gmp"
+    gmp_path="$(tool::get_root_install_dir)/gmp"
     export LIBRARY_PATH=$gmp_path/lib:$LIBRARY_PATH
     export CPFLAGS="-I${gmp_path}/include/gmp.h $CPFLAGS"
     export CFLAGS="-I${gmp_path}/include/gmp.h $CFLAGS"
