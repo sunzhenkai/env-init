@@ -41,10 +41,20 @@ function path() {
     tool::append_binary_path $APP $SUBPATH
 }
 
+function list() {
+    install_dir=$(tool::get_root_install_dir)
+    for i in $(ls "$BASE/../app/"); do
+        if [ -e "$install_dir/$i" ]; then
+            echo "[√] $i"
+        else
+            echo "[×] $i"
+        fi
+    done
+}
+
 case $APP in
 "") usage && exit 1 ;;
-ls)
-    for i in $(ls "$BASE/../app/"); do echo $i; done; exit 0 ;;
+ls) list; exit 0 ;;
 info)
     info; exit 0 ;;
 clean)
