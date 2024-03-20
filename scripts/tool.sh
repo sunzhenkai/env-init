@@ -106,6 +106,15 @@ function tool::get_install_dir() {
     echo "$(tool::get_root_install_dir)/$1-$2"
 }
 
+# tool::mv_by_stage {appname} {version} {stage}
+function tool::mv_by_stage() {
+    source_dir=$(tool::get_extract_dir $1 $2 $3)
+    install_dir=$(tool::get_install_dir $1 $2)
+    mkdir -p "$install_dir"
+    echo "[$1] move by stage. [from=$source_dir, to=$install_dir]"
+    mv "$source_dir"/* "$install_dir"/
+}
+
 # tool::update_install_link {appname} {version}
 function tool::update_install_link() {
     ln -s "$(tool::get_root_install_dir)/$1-$2" "$(tool::get_root_install_dir)/$1"
@@ -118,6 +127,12 @@ function tool::download() {
     mkdir -p "$ENV_INSTALL_PACKAGE_DIR/download/"
     wget --no-check-certificate -O "$dest" "$1"
     echo "[$2] downloading done. [version=$3, dest=$dest]"
+}
+
+# tool::download_github_release {appname} {user} {project} {version} 
+function tool::download_github_release() {
+    _URL=https://github.com/$2/$3/archive/refs/tags/$4.tar.gz
+    tool::download $_URL $1 $4
 }
 
 # tool::tar_extract {appname} {version} {stage}
