@@ -83,7 +83,11 @@ function tool::get_root_install_dir() {
 
 # tool::append_path {appname} {subpath}
 function tool::append_binary_path() {
-    binary_path="$(tool::get_root_install_dir)/$1/$2"
+    if [[ -n "$2" ]]; then
+        binary_path="$(tool::get_root_install_dir)/$1/$2"
+    else
+        binary_path="$(tool::get_root_install_dir)/$1"
+    fi
     env_file="$ENV_INIT_DIR/env"
     [ ! -e "$env_file" ] && touch "$env_file"
     tool::append_if_not_exists "$ENV_INIT_DIR/env" "export PATH=$binary_path:\$PATH"
