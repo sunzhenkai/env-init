@@ -19,6 +19,11 @@ alias gckb='git checkout -b'
 alias gmm='git merge master'
 alias gfmm='git fetch origin master:master'
 alias gsmu='git submodule update --init'
+alias gtgs='git fetch --tags && git tag --sort=-creatordate --list | head -n 10'
+function gptg() {
+    git tag $1
+    git push origin $1
+}
 
 # mvn alias
 alias mvnp='mvn clean package'
