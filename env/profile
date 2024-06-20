@@ -21,6 +21,7 @@ alias gfmm='git fetch origin master:master'
 alias gsmu='git submodule update --init'
 alias gtgs='git fetch --tags && git tag --sort=-creatordate --list | head -n 10'
 function gptg() { git tag $1 && git push origin $1 }
+function gpm() { git add . && git commit -m "$1" && git push }
 
 # mvn alias
 alias mvnp='mvn clean package'
