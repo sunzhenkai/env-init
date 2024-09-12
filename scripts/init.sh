@@ -1,5 +1,5 @@
 #!/bin/bash
-_BASE=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)
+_BASE=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)/..
 source "$_BASE/scripts/tool.sh"
 
 # export Variables

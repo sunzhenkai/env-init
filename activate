@@ -2,7 +2,7 @@
 git submodule update --init
 BASE=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)
 source "$BASE/scripts/tool.sh"
-source "$BASE/init.sh"
+source "$BASE/scripts/init.sh"
 
 ExportEnvs
 EnvInit
