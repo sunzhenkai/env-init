@@ -24,6 +24,7 @@ function install() {
     tool::download $DOWNLOAD_URL $APP $VERSION
     tool::zip_extract $APP $VERSION install
     tool::update_install_link $APP $VERSION
+    tool::append_binary_path $APP 
     tool::append_binary_path $APP bin
 }
 
