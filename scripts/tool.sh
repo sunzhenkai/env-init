@@ -131,6 +131,15 @@ function tool::get_install_dir() {
     echo "$(tool::get_root_install_dir)/$1-$2"
 }
 
+# tool::is_installed {appname} {version}
+function tool::is_installed() {
+    if [[ -e "$(tool::get_install_dir $1 $2)" ]]; then
+        return 0
+    else
+        return 1
+    fi
+}
+
 # tool::mv_by_stage {appname} {version} {stage}
 function tool::mv_by_stage() {
     source_dir=$(tool::get_extract_dir $1 $2 $3)
