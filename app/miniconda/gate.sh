@@ -52,7 +52,7 @@ function build() {
     exit 1
 }
 
-TASK="install"
+TASK="usage"
 VERSION=latest
 while getopts ":ib:e:v:" opt; do
     case $opt in
