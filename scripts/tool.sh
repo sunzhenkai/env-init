@@ -1,3 +1,12 @@
+function FATAL() {
+    echo "ERROR: $@"
+    exit 1
+}
+
+function WARN() {
+    echo "WARN $@"
+}
+
 # common tools
 function tool::is_same_file() {
     if ! command -v vim >/dev/null 2>&1; then
@@ -44,7 +53,7 @@ function tool::cpu_arch_alias() {
     fi
 }
 
-function tool::check_install() {
+function tool::pre_install_check() {
     if [ -z "$ENV_INIT_DIR" ]; then
         return 1
     fi
@@ -81,6 +90,12 @@ function tool::get_root_install_dir() {
     echo "$ENV_INSTALL_DIR/install"
 }
 
+# tool::ln_to_bin {appname} {version} {subpath}
+function tool::ln_to_bin() {
+    local binary_path="$(tool::get_install_dir $1 $2)/$3"
+    ln -s ${binary_path} ${ENV_INIT_BIN}/
+}
+
 # tool::append_path {appname} {subpath}
 function tool::append_binary_path() {
     if [[ -n "$2" ]]; then
@@ -95,9 +110,15 @@ function tool::append_binary_path() {
 
 ########## download & build ##########
 
+# get package dir by stage
 # tool::get_package_dir {appname} {version} {stage}
 function tool::get_package_dir() {
     echo "$ENV_INSTALL_PACKAGE_DIR/$3/$1-$2"
+}
+
+# tool::get_download_file {appname} {version}
+function tool::get_download_file() {
+    echo "$ENV_INSTALL_PACKAGE_DIR/download/$1-$2"
 }
 
 # tool::get_extract_dir {appname} {version} {stage}

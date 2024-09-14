@@ -3,7 +3,7 @@ set -e
 # basic check
 _BASE=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)
 source "${_BASE}/../../scripts/tool.sh"
-[ ! tool::check_install ] && exit 1
+[ ! tool::pre_install_check ] && exit 1
 
 # basic information
 VERSION='v1.12.1'

@@ -39,9 +39,9 @@ Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
 
 """" personal plugins
 Plugin 'scrooloose/nerdtree'
-Plugin 'artur-shaik/vim-javacomplete2'
+"Plugin 'artur-shaik/vim-javacomplete2'
 Plugin 'junegunn/fzf.vim'
-Plugin 'Valloric/YouCompleteMe'
+"Plugin 'Valloric/YouCompleteMe'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'jistr/vim-nerdtree-tabs'
