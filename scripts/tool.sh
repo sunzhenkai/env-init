@@ -116,9 +116,9 @@ function tool::get_package_dir() {
     echo "$ENV_INSTALL_PACKAGE_DIR/$3/$1-$2"
 }
 
-# tool::get_download_file {appname} {version}
+# tool::get_download_file {appname} {version} ${suffix}
 function tool::get_download_file() {
-    echo "$ENV_INSTALL_PACKAGE_DIR/download/$1-$2"
+    echo "$ENV_INSTALL_PACKAGE_DIR/download/$1-$2$3"
 }
 
 # tool::get_extract_dir {appname} {version} {stage}

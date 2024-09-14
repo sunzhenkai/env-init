@@ -18,6 +18,7 @@ function ExportEnvs() {
 
 # init env file
 function EnvInit() {
+    mkdir -p "${ENV_INIT_BIN}"
     mkdir -p "${ENV_INSTALL_DIR}"
     mkdir -p "${ENV_INSTALL_PACKAGE_DIR}"
 
