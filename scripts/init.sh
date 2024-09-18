@@ -24,7 +24,7 @@ function EnvInit() {
 
     # init env file
     tool::append_to_env_profile "export HOME=\"$NEW_HOME\""
-    tool::append_to_env_profile 'export ENV_INIT_DIR="$HOME/.env-init"'
+    tool::append_to_env_profile 'export ENV_INIT_DIR="$HOME/.local/.env-init"'
     tool::append_to_env_profile 'export ENV_INIT_ENV_FILE="$ENV_INIT_DIR/env"'
     tool::append_to_env_profile 'export ENV_INSTALL_DIR="$ENV_INIT_DIR/app"'
     tool::append_to_env_profile 'export ENV_INSTALL_PACKAGE_DIR="$ENV_INIT_DIR/packages"'
