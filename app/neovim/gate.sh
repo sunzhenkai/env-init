@@ -28,7 +28,7 @@ function install() {
 }
 
 function config() {
-  mv "$HOME/.config/nvim" "$HOME/.config/nvim-$(date +%s)"
+  [[ -e "$HOME/.config/nvim" ]] && mv "$HOME/.config/nvim" "$HOME/.config/nvim-$(date +%s)"
   git clone --recursive https://github.com/sunzhenkai/nvim.git "$HOME/.config/nvim"
 }
 
