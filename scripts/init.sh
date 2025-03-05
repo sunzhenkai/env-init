@@ -46,5 +46,5 @@ function InitEnvCommand {
 # add source command to current HOME profiles
 # 默认登录当前用户后激活新的环境变量, 用于使用独立账号
 function InitEnvSource {
-    tool::append_to_profiles "source \"${ENV_INIT_ENV_FILE}\""
+    tool::append_to_profiles "\nsource \"${ENV_INIT_ENV_FILE}\""
 }
