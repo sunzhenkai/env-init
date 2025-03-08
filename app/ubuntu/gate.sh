@@ -1,5 +1,4 @@
 #!/bin/bash
-set -e
 # basic check
 _BASE=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" &>/dev/null && pwd)
 source "${_BASE}/../../scripts/tool.sh"
