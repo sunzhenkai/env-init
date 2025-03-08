@@ -33,7 +33,8 @@ function EnvInit() {
     tool::append_to_env_profile "export PATH=$_BASE/bin:\$PATH"
 
     tool::append_to_env_profile_lines <"$_BASE"/env/profile
-    tool::append_to_env_profile_lines <"$_BASE/env/profile_$(tool::os_type)"
+    local os_env_="$_BASE/env/profile_$(tool::os_type)"
+    [ -e "$os_env_" ] && tool::append_to_env_profile_lines <"$os_env_"
     # [ -e "$_BASE/env/profile_$(tool::os_type)" ] && tool::append_to_env_profile_lines < "$_BASE/env/profile_$(tool::os_type)"
 }
 
@@ -46,5 +47,5 @@ function InitEnvCommand {
 # add source command to current HOME profiles
 # 默认登录当前用户后激活新的环境变量, 用于使用独立账号
 function InitEnvSource {
-    tool::append_to_profiles "\nsource \"${ENV_INIT_ENV_FILE}\""
+    tool::append_to_profiles "source \"${ENV_INIT_ENV_FILE}\""
 }

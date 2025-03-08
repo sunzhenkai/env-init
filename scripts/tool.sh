@@ -82,7 +82,7 @@ function tool::append_to_env_profile_lines() {
 function tool::append_to_profiles() {
     profiles='.bashrc .bash_profile .zshrc'
     for i in $profiles; do
-        [ -e "$HOME/$i" ] && tool::append_if_not_exists "$HOME/$i" "$1"
+        [ -e "$HOME/$i" ] && echo "" >> "$HOME/$i"  && tool::append_if_not_exists "$HOME/$i" "$1"
     done
 }
 
