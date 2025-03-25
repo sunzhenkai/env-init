@@ -29,7 +29,7 @@ function config() {
   echo >> $HOME/.zshrc
   echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> $HOME/.zshrc
   eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-  brew install openjdk@17
+  brew install openjdk@17 cmake ninja bison flex zsh
 }
 
 TASK="install"
