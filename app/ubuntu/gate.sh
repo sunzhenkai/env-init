@@ -27,6 +27,8 @@ function config() {
   sudo apt install -y gcc-$GCC_VERSION g++-$GCC_VERSION gettext grep gzip libtool m4 make patch pkgconf sed texinfo python3-pip
   sudo apt install -y gdb wget curl vim zip unzip tar xz-utils
   sudo apt install -y build-essential procps patch
+  sudo ln -fs /usr/bin/gcc-$GCC_VERSION /usr/bin/gcc
+  sudo ln -fs /usr/bin/g++-$GCC_VERSION /usr/bin/g++
 
   # zsh
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
@@ -41,13 +43,16 @@ function config() {
   # nvm
   if ! command -v nvm; then
     curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
+    echo '' >>~/.zshrc
+    echo 'export NVM_DIR="$HOME/.nvm"' >>~/.zshrc
+    echo '[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm' >>~/.zshrc
+    echo '[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"' >>~/.zshrc
+    source ~/.zshrc
   fi
-  nvm install latest
+  nvm install --lts
   npm install -g yarn
 
   # env
-  sudo ln -fs /usr/bin/gcc-$GCC_VERSION /usr/bin/gcc
-  sudo ln -fs /usr/bin/g++-$GCC_VERSION /usr/bin/g++
   pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
   echo "" >>~/.zshrc
   echo "export CC=/usr/bin/gcc-$GCC_VERSION" >>~/.zshrc
