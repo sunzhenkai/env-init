@@ -40,7 +40,7 @@ function config() {
     echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >>$HOME/.zshrc
     eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
   fi
-  brew install openjdk@17 cmake ninja bison flex htop nvim go
+  brew install openjdk@17 cmake ninja bison flex htop nvim go ripgrep
   # nvm
   if ! command -v nvm; then
     curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
