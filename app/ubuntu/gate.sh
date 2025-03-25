@@ -21,17 +21,37 @@ function install() {
 }
 
 function config() {
-  sudo apt -y install tmux curl wget 
-  # homebrew
-  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-  echo >> $HOME/.zshrc
-  echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> $HOME/.zshrc
-  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-  brew install openjdk@17 cmake ninja bison flex zsh
+  GCC_VERSION=13
+  sudo apt install -y tmux curl wget pkg-config gcc g++ zsh
+  sudo apt install -y git autoconf automake binutils bison findutils flex gawk
+  sudo apt install -y gcc-$GCC_VERSION g++-$GCC_VERSION gettext grep gzip libtool m4 make patch pkgconf sed texinfo python3-pip
+  sudo apt install -y gdb wget curl vim zip unzip tar xz-utils
+  sudo apt install -y build-essential procps patch
+
   # zsh
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+  # homebrew
+  if ! command -v brew; then
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+    echo >>$HOME/.zshrc
+    echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >>$HOME/.zshrc
+    eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+  fi
+  brew install openjdk@17 cmake ninja bison flex htop nvim go
   # nvm
-  curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
+  if ! command -v nvm; then
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
+  fi
+  nvm install latest
+  npm install -g yarn
+
+  # env
+  sudo ln -fs /usr/bin/gcc-$GCC_VERSION /usr/bin/gcc
+  sudo ln -fs /usr/bin/g++-$GCC_VERSION /usr/bin/g++
+  pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
+  echo "" >>~/.zshrc
+  echo "export CC=/usr/bin/gcc-$GCC_VERSION" >>~/.zshrc
+  echo "export CXX=/usr/bin/g++-$GCC_VERSION" >>~/.zshrc
 }
 
 TASK="install"
