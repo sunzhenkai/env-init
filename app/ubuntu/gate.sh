@@ -47,6 +47,10 @@ function config() {
   fi
   brew install openjdk@17 cmake ninja bison flex htop nvim go ripgrep
   brew install yazi ffmpeg sevenzip jq poppler fd ripgrep fzf zoxide imagemagick font-symbols-only-nerd-font
+  brew install fish starship gitui
+  echo "" >>~/.zshrc
+  echo 'eval "$(starship init zsh)"' >>~/.zshrc
+
   # nvm
   if ! command -v nvm; then
     curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
