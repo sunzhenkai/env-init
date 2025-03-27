@@ -21,7 +21,12 @@ function install() {
 }
 
 function config() {
-  GCC_VERSION=13
+  RELEASE=$(lsb_release -a | grep Release)
+  if [[ "$RELEASE" =~ "22.04" ]]; then
+    GCC_VERSION=11
+  else
+    GCC_VERSION=13
+  fi
   sudo apt install -y tmux curl wget pkg-config gcc g++ zsh
   sudo apt install -y git autoconf automake binutils bison findutils flex gawk
   sudo apt install -y gcc-$GCC_VERSION g++-$GCC_VERSION gettext grep gzip libtool m4 make patch pkgconf sed texinfo
