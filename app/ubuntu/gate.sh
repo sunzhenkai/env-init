@@ -46,6 +46,7 @@ function config() {
     eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
   fi
   brew install openjdk@17 cmake ninja bison flex htop nvim go ripgrep
+  brew install yazi ffmpeg sevenzip jq poppler fd ripgrep fzf zoxide imagemagick font-symbols-only-nerd-font
   # nvm
   if ! command -v nvm; then
     curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
