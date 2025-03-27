@@ -47,7 +47,7 @@ function config() {
   fi
   brew install openjdk@17 cmake ninja bison flex htop nvim go ripgrep
   brew install yazi ffmpeg sevenzip jq poppler fd ripgrep fzf zoxide imagemagick font-symbols-only-nerd-font
-  brew install fish starship gitui
+  brew install fish starship lazygit gitui
   echo "" >>~/.zshrc
   echo 'eval "$(starship init zsh)"' >>~/.zshrc
 
