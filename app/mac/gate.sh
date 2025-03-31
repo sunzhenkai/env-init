@@ -50,7 +50,7 @@ function config() {
   npm install -g yarn
 
   # env
-  pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
+  #pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
   echo "" >>~/.zshrc
   echo "export CC=/usr/bin/gcc-$GCC_VERSION" >>~/.zshrc
   echo "export CXX=/usr/bin/g++-$GCC_VERSION" >>~/.zshrc
