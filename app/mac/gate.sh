@@ -30,6 +30,7 @@ function config() {
     echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >>$HOME/.zshrc
     eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
   fi
+  brew install kitty
   brew install openjdk@17 cmake ninja bison flex htop nvim go ripgrep
   brew install yazi ffmpeg sevenzip jq poppler fd ripgrep fzf zoxide imagemagick font-symbols-only-nerd-font
   brew install fish starship lazygit gitui
