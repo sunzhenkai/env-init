@@ -15,10 +15,10 @@ alias gb='git branch'
 alias gbd='git branch -D'
 alias glg='git log'
 alias gck='git checkout'
-alias gckm='git checkout master'
+alias gckm='git checkout main'
 alias gckb='git checkout -b'
-alias gmm='git merge master'
-alias gfmm='git fetch origin master:master'
+alias gmm='git merge main'
+alias gfmm='git fetch origin main:main'
 alias gsmu='git submodule update --init'
 alias gtgs='git fetch --tags && git tag --sort=-creatordate --list | head -n 10'
 function gptg() { git tag $1 && git push origin $1 ; }
@@ -31,9 +31,9 @@ alias mvnt='mvn dependency:tree'
 
 # arc
 alias arcf='arc feature'
-alias arcd='arc diff master'
-alias arcp='arc diff --preview master'
-alias arcl='arc land --onto master'
+alias arcd='arc diff main'
+alias arcp='arc diff --preview main'
+alias arcl='arc land --onto main'
 
 # others
 alias rmf='rm -f'
