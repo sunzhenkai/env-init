@@ -27,7 +27,7 @@ function install() {
 }
 
 function config() {
-  brew install openjdk@17 cmake ninja bison flex htop nvim go ripgrep
+  brew install openjdk@17 cmake ninja bison flex htop nvim go
   # yazi
   brew install yazi ffmpeg sevenzip jq poppler fd ripgrep fzf zoxide imagemagick font-symbols-only-nerd-font
   brew install lazygit gitui
