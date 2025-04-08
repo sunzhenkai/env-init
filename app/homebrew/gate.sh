@@ -44,9 +44,10 @@ function config() {
   # c/c++
   brew install pkg-config ninja bear ctags valgrind llvm make cmake gcc clangd
   # java
-  brew install openjdk@17 bison flex htop go
-  # go
-  brew install go gotests
+  brew install openjdk@17 bison flex htop
+  # go.
+  # NOTE: Install go by asdf
+  brew install gotests
 }
 
 TASK="install"
