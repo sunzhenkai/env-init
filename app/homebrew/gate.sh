@@ -34,6 +34,7 @@ function config() {
   brew install yazi ffmpeg sevenzip jq poppler zoxide imagemagick font-symbols-only-nerd-font
   brew install nushell fish starship
   brew install pngpaste
+  brew install asdf
   # shell
   brew install fish starship
   # git
