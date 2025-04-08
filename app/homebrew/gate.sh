@@ -27,15 +27,25 @@ function install() {
 }
 
 function config() {
-  brew install openjdk@17 cmake ninja bison flex htop nvim go
-  brew install luarocks hunspell tectonic ghostscript
+  # utils
+  brew install htop wget curl telnet
   brew install bat the_silver_searcher perl universal-ctags
-  # yazi
-  brew install yazi ffmpeg sevenzip jq poppler fd ripgrep fzf zoxide imagemagick font-symbols-only-nerd-font
-  brew install lazygit gitui gotests nushell fish starship
+  brew install luarocks hunspell tectonic ghostscript
+  brew install yazi ffmpeg sevenzip jq poppler zoxide imagemagick font-symbols-only-nerd-font
+  brew install nushell fish starship
   brew install pngpaste
-  echo "" >>~/.zshrc
-  echo 'eval "$(starship init zsh)"' >>~/.zshrc
+  # shell
+  brew install fish starship
+  # git
+  brew install lazygit gitui
+  # editor
+  brew install nvim fd fzf ripgrep
+  # c/c++
+  brew install pkg-config ninja bear ctags valgrind llvm make cmake gcc clangd
+  # java
+  brew install openjdk@17 bison flex htop go
+  # go
+  brew install go gotests
 }
 
 TASK="install"
