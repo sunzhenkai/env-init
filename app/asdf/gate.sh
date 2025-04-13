@@ -30,6 +30,7 @@ function install_app() {
 function config() {
   install_app golang latest
   install_app zellij latest
+  install_app python 3.13.3
   install_app cmake 3.31.7
 }
 
