@@ -36,7 +36,7 @@ function config() {
 TASK="install"
 while getopts ":icv:" opt; do
   case $opt in
-  c) TASK="install" ;;
+  i) TASK="install" ;;
   c) TASK="config" ;;
   v) VERSION=$OPTARG ;;
   *) usage ;;
