@@ -36,15 +36,6 @@ function config() {
   sudo ln -fs /usr/bin/gcc-$GCC_VERSION /usr/bin/gcc
   sudo ln -fs /usr/bin/g++-$GCC_VERSION /usr/bin/g++
 
-  # zsh
-  sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-  brew install openjdk@17 cmake ninja bison flex htop nvim go ripgrep
-  brew install yazi ffmpeg sevenzip jq poppler fd ripgrep fzf zoxide imagemagick font-symbols-only-nerd-font
-  brew install fish starship lazygit gitui
-
-  nvm install --lts
-  npm install -g yarn
-
   # env
   pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
 }

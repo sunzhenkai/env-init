@@ -20,10 +20,15 @@ function install() {
   brew instal asdf
 }
 
+function install_app() {
+  asdf plugin add $1
+  asdf install $1 latest
+  asdf set -u $1 latest
+}
+
 function config() {
-  asdf plugin add golang
-  asdf install golang latest
-  asdf set -u golang latest
+  install_app golang
+  install_app zellij
 }
 
 TASK="install"

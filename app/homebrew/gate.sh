@@ -31,7 +31,8 @@ function config() {
   brew install htop wget curl telnet
   brew install bat the_silver_searcher perl universal-ctags
   brew install luarocks hunspell tectonic ghostscript
-  brew install yazi ffmpeg sevenzip jq poppler zoxide imagemagick font-symbols-only-nerd-font
+  brew install yazi ffmpeg sevenzip jq poppler zoxide imagemagick
+  #brew install font-symbols-only-nerd-font
   brew install nushell fish starship
   brew install pngpaste
   brew install asdf
