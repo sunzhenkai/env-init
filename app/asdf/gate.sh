@@ -22,13 +22,14 @@ function install() {
 
 function install_app() {
   asdf plugin add $1
-  asdf install $1 latest
-  asdf set -u $1 latest
+  asdf install $1 $2
+  asdf set -u $1 $2
 }
 
 function config() {
-  install_app golang
-  install_app zellij
+  install_app golang latest
+  install_app zellij latest
+  install_app cmake 3.31.7
 }
 
 TASK="install"
