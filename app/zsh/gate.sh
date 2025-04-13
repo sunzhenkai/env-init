@@ -17,6 +17,7 @@ EOF
 }
 
 function install() {
+  echo "not impl"
 }
 
 function config() {

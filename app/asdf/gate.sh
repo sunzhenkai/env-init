@@ -12,6 +12,7 @@ function usage() {
 Usage: ii $APP [args]
 
 Args
+    -i  install
     -c  config
 EOF
 }
@@ -35,6 +36,7 @@ function config() {
 TASK="install"
 while getopts ":icv:" opt; do
   case $opt in
+  c) TASK="install" ;;
   c) TASK="config" ;;
   v) VERSION=$OPTARG ;;
   *) usage ;;
