@@ -32,6 +32,7 @@ function config() {
   install_app zellij latest
   install_app python 3.13.3
   install_app cmake 3.31.7
+  install_app nodejs latest
 }
 
 TASK="install"
