@@ -28,10 +28,11 @@ function install() {
 
 function config() {
   # utils
+  brew install watch fswatch
   brew install htop wget curl telnet
   brew install bat the_silver_searcher perl universal-ctags
   brew install luarocks hunspell tectonic ghostscript
-  brew install yazi ffmpeg sevenzip jq poppler zoxide imagemagick
+  brew install yazi ffmpeg sevenzip jq poppler zoxide imagemagick chafa resvg
   #brew install font-symbols-only-nerd-font
   brew install nushell fish starship
   brew install pngpaste
