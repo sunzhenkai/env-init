@@ -21,6 +21,7 @@ function install() {
 }
 
 function config() {
+  sed -i 's/^# ZSH_CUSTOM.*/ZSH_CUSTOM=~\/.config\/zsh\/oh-my-zsh/g' ~/.zshrc
   # install oh my zsh
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 }

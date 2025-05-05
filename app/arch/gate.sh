@@ -21,7 +21,7 @@ function install() {
 }
 
 function config() {
-  sudo pacman -Sy gdb cmake ninja texinfo make less which
+  sudo pacman -Sy gdb cmake ninja texinfo make less which base-devel procps-ng curl file git sed gawk
 }
 
 TASK="install"
