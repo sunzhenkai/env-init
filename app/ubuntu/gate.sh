@@ -27,11 +27,11 @@ function config() {
   else
     GCC_VERSION=13
   fi
-  sudo apt install -y tmux curl wget pkg-config gcc g++ zsh
+  sudo apt install -y curl wget pkg-config
   sudo apt install -y git autoconf automake binutils bison findutils flex gawk
   sudo apt install -y gcc-$GCC_VERSION g++-$GCC_VERSION gettext grep gzip libtool m4 make patch pkgconf sed texinfo
   sudo apt install -y python3-pip python3-virtualenv python3-venv
-  sudo apt install -y gdb wget curl vim zip unzip tar xz-utils
+  sudo apt install -y gdb vim zip unzip tar xz-utils
   sudo apt install -y build-essential procps patch sqlite3
   sudo apt install -y imagemagick libmagickwand-dev
   sudo ln -fs /usr/bin/gcc-$GCC_VERSION /usr/bin/gcc

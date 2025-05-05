@@ -13,6 +13,7 @@ Usage: ii $APP [args]
 
 Args
     -c  config
+    -i  install
 EOF
 }
 
@@ -34,11 +35,11 @@ function config() {
   brew install luarocks hunspell tectonic ghostscript
   brew install yazi ffmpeg sevenzip jq poppler zoxide imagemagick chafa resvg
   #brew install font-symbols-only-nerd-font
-  brew install nushell fish starship
   brew install pngpaste
   brew install asdf
+  brew install tmux zsh
   # shell
-  brew install fish starship
+  brew install nushell fish starship
   # git
   brew install lazygit gitui
   # editor
@@ -56,6 +57,7 @@ TASK="install"
 while getopts ":icv:" opt; do
   case $opt in
   c) TASK="config" ;;
+  i) TASK="install" ;;
   v) VERSION=$OPTARG ;;
   *) usage ;;
   esac
