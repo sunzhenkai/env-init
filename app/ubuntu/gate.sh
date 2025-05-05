@@ -34,6 +34,7 @@ function config() {
   sudo apt install -y gdb vim zip unzip tar xz-utils
   sudo apt install -y build-essential libreadline-dev libssl-dev procps patch sqlite3
   sudo apt install -y imagemagick libmagickwand-dev
+  sudo apt install -y libmariadb-dev mariadb-client
   sudo ln -fs /usr/bin/gcc-$GCC_VERSION /usr/bin/gcc
   sudo ln -fs /usr/bin/g++-$GCC_VERSION /usr/bin/g++
 
