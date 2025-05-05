@@ -27,6 +27,10 @@ alias gtgs='git fetch --tags && git tag --sort=-creatordate --list | head -n 10'
 function gptg() { git tag $1 && git push origin $1 ; }
 function gpm() { git add . && git commit -m "$1" && git push ; }
 
+## docker
+# delete container
+function ddc() { docker stop "$1" && docker rm "$1" }
+
 # mvn alias
 alias mvnp='mvn clean package'
 alias mvnd='mvn clean deploy'
