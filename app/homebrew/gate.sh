@@ -30,7 +30,7 @@ function install() {
 function config() {
   # utils
   brew install watch fswatch
-  brew install htop wget curl telnet
+  brew install htop wget curl
   brew install bat the_silver_searcher perl universal-ctags
   brew install luarocks hunspell tectonic ghostscript
   brew install yazi ffmpeg sevenzip jq poppler zoxide imagemagick chafa resvg
