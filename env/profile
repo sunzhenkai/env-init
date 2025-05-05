@@ -29,7 +29,7 @@ function gpm() { git add . && git commit -m "$1" && git push ; }
 
 ## docker
 # delete container
-function ddc() { docker stop "$1" && docker rm "$1" }
+function ddc() { docker stop "$1" && docker rm "$1"; }
 
 # mvn alias
 alias mvnp='mvn clean package'
