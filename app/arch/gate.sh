@@ -21,7 +21,7 @@ function install() {
 }
 
 function config() {
-  pacman -S gdb cmake ninja texinfo
+  pacman -Sy gdb cmake ninja texinfo make
 }
 
 TASK="install"
