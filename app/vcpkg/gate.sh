@@ -18,8 +18,8 @@ EOF
 
 function install() {
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/sunzhenkai/vcpkg-base/main/scripts/install_vcpkg_pure.sh)"
-  tool::append_to_env_profile "export VCPKG_ROOT=${HOME}/.local/vcpkg"
-  tool::append_to_env_profile "export PATH=${VCPKG_ROOT}:$PATH"
+  # tool::append_to_env_profile "export VCPKG_ROOT=${HOME}/.local/vcpkg"
+  # tool::append_to_env_profile "export PATH=${VCPKG_ROOT}:$PATH"
 }
 
 function config() {
