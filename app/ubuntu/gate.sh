@@ -32,7 +32,7 @@ function config() {
   sudo apt install -y gcc-$GCC_VERSION g++-$GCC_VERSION gettext grep gzip libtool m4 make patch pkgconf sed texinfo
   sudo apt install -y python3-pip python3-virtualenv python3-venv
   sudo apt install -y gdb vim zip unzip tar xz-utils
-  sudo apt install -y build-essential libreadline-dev libssl-dev procps patch sqlite3
+  sudo apt install -y build-essential libreadline-dev libssl-dev procps patch sqlite3 libsqlite3-dev
   sudo apt install -y imagemagick libmagickwand-dev
   sudo apt install -y libmariadb-dev mariadb-client
   sudo ln -fs /usr/bin/gcc-$GCC_VERSION /usr/bin/gcc
