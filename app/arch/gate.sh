@@ -21,7 +21,8 @@ function install() {
 }
 
 function config() {
-  sudo pacman -Sy gdb cmake ninja texinfo make less which base-devel procps-ng curl file git sed gawk bind
+  sudo pacman -Sy gdb cmake ninja texinfo make less which base-devel procps-ng curl file git sed gawk bind \
+    fzf
   # yay
   cd /tmp
   git clone https://aur.archlinux.org/yay.git
