@@ -37,6 +37,28 @@ function tool::os_type() {
   echo ${os}
 }
 
+# ubuntu | debian | pop
+# fedora
+# alinux (aliyun linux)
+# amzn (amazon linux)
+# rhel | centos | rocky
+# opensuse-leap
+# arch | manjaro
+# darwin
+function tool::os_id() {
+  if [ -f "/etc/os-release" ]; then
+    . /etc/os-release
+  elif [ -f "/etc/arch-release" ]; then
+    export ID=arch
+  elif [[ "$OSTYPE" =~ ^darwin ]]; then
+    export ID="darwin"
+  else
+    echo "/etc/os-release missing."
+    exit 1
+  fi
+  echo $ID
+}
+
 function tool::cpu_arch() {
   echo $(uname -m)
 }
