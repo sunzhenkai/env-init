@@ -21,7 +21,7 @@ function install() {
   echo "--- install docker ($ID) ---"
   case "$ID" in
   arch)
-    sudo pacman -S docker docker-compose
+    sudo pacman -S docker docker-compose docker-buildx
     sudo systemctl start docker
     sudo systemctl enable docker
     sudo usermod -aG docker $USER
