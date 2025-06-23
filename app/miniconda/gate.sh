@@ -56,11 +56,12 @@ function build() {
 
 TASK="usage"
 VERSION=latest
-while getopts ":ib:e:v:" opt; do
+while getopts ":icb:e:v:" opt; do
   case $opt in
   i) TASK="install" ;;
   b) TASK="build" ;;
   e) ENV_NAME=$OPTARG ;;
+  c) TASK="config" ;;
   v) VERSION=$OPTARG ;;
   *) usage ;;
   esac
