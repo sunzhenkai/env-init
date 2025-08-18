@@ -31,6 +31,7 @@ function gpm() { git add . && git commit -m "$1" && git push ; }
 # delete container
 function ddc() { docker stop "$1" && docker rm "$1"; }
 alias dps='docker ps --format "table {{.ID}}\\t{{.Names}}\\t{{.Status}}\\t{{.Image}}"'
+alias dpsa='docker ps --format "table {{.ID}}\\t{{.Names}}\\t{{.Status}}\\t{{.Image}}" -a'
 
 # mvn alias
 alias mvnp='mvn clean package'
