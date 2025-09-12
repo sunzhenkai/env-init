@@ -22,7 +22,7 @@ function install() {
 
 function config() {
   sudo pacman -Sy gdb cmake ninja texinfo make less which base-devel procps-ng curl file git sed gawk bind \
-    fzf pkg-config \
+    fzf pkg-config mariadb-clients \
     noto-fonts-cjk wqy-microhei adobe-source-han-sans-otc-fonts
   # yay
   cd /tmp
