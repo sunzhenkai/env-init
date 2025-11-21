@@ -13,11 +13,16 @@ Usage: ii $APP [args]
 
 Args
     -c  config
+    -g  gui config
 EOF
 }
 
 function install() {
   echo "install: not implement"
+}
+
+function gui() {
+  yay -Sy google-chrome kitty wezterm
 }
 
 function config() {
@@ -37,9 +42,10 @@ function config() {
 }
 
 TASK="install"
-while getopts ":c" opt; do
+while getopts ":cg" opt; do
   case $opt in
   c) TASK="config" ;;
+  g) TASK="gui" ;;
   *) usage ;;
   esac
 done
