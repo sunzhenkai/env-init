@@ -24,12 +24,12 @@ function install() {
 function gui() {
   yay -Sy google-chrome kitty wezterm
   # font
-  paru -Sy maplemono-cn-unhinted
+  paru -Sy maplemononl-cn # maplemono-cn-unhinted
 }
 
 function config() {
   sudo pacman -Sy gdb cmake ninja texinfo make less which base-devel procps-ng curl file git sed gawk bind \
-    fzf pkg-config mariadb-clients traceroute \
+    fzf pkg-config mariadb-clients traceroute wireguard-tools \
     noto-fonts-cjk wqy-microhei adobe-source-han-sans-otc-fonts
   # yay
   cd /tmp
