@@ -23,6 +23,8 @@ function install() {
 
 function gui() {
   yay -Sy google-chrome kitty wezterm
+  # font
+  paru -Sy maplemono-cn-unhinted
 }
 
 function config() {
