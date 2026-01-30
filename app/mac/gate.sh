@@ -12,53 +12,44 @@ function usage() {
 Usage: ii $APP [args]
 
 Args
+    -i  install
     -c  config
 EOF
 }
 
 function install() {
-  echo "install: not implement"
+  echo "Installing macOS applications..."
+  # font, install
+  ii font -i
+  # homebrew, install
+  ii homebrew -i
+  # neovim, install
+  ii neovim -i
+  # qwen, install
+  ii qwen -i
+  # nvm, install
+  ii nvm -i
+  # uv, install
+  ii uv -i
+  echo "Installation completed!"
 }
 
 function config() {
-  # zsh
-  sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-  # homebrew
-  # if ! command -v brew; then
-  #   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-  #   echo >>$HOME/.zshrc
-  #   echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >>$HOME/.zshrc
-  #   eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-  # fi
-  brew install kitty
-  brew install openjdk@17 cmake ninja bison flex htop nvim go ripgrep
-  brew install yazi ffmpeg sevenzip jq poppler fd ripgrep fzf zoxide imagemagick font-symbols-only-nerd-font
-  brew install fish starship lazygit gitui
-  # echo "" >>~/.zshrc
-  # echo 'eval "$(starship init zsh)"' >>~/.zshrc
-
-  # nvm
-  # if ! command -v nvm; then
-  #   curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
-  #   echo '' >>~/.zshrc
-  #   echo 'export NVM_DIR="$HOME/.nvm"' >>~/.zshrc
-  #   echo '[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm' >>~/.zshrc
-  #   echo '[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"' >>~/.zshrc
-  #   source ~/.zshrc
-  # fi
-  nvm install --lts
-  npm install -g yarn
-
-  # env
-  #pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
-  # echo "" >>~/.zshrc
-  # echo "export CC=/usr/bin/gcc-$GCC_VERSION" >>~/.zshrc
-  # echo "export CXX=/usr/bin/g++-$GCC_VERSION" >>~/.zshrc
+  echo "Configuring macOS applications..."
+  # homebrew, config
+  brew update
+  brew upgrade
+  # zsh, config
+  ii zsh -c
+  # homebrew, config (additional)
+  brew cleanup
+  echo "Configuration completed!"
 }
 
 TASK="install"
 while getopts ":icv:" opt; do
   case $opt in
+  i) TASK="install" ;;
   c) TASK="config" ;;
   v) VERSION=$OPTARG ;;
   *) usage ;;
