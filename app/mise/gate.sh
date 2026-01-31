@@ -18,21 +18,24 @@ EOF
 }
 
 function install() {
-  brew instal asdf
+  echo "Installing mise..."
+  brew install mise
+  echo "mise installation completed!"
 }
 
 function install_app() {
-  asdf plugin add $1
-  asdf install $1 $2
-  asdf set -u $1 $2
+  mise install $1@$2
+  mise use -g $1@$2
 }
 
 function config() {
+  echo "Configuring mise applications..."
   install_app golang 1.24.9
   # install_app zellij latest
   install_app python 3.13.3
   install_app cmake 3.31.7
   install_app nodejs latest
+  echo "mise configuration completed!"
 }
 
 TASK="install"
