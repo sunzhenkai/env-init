@@ -52,6 +52,24 @@ function list() {
     done
 }
 
+function uninstall_app() {
+    APP=${1}
+    [ -z "$APP" ] && echo "app not specified" && exit 1
+    SCRIPT="${BASE}/../app/${APP}"
+    if [ ! -e "$SCRIPT" ]; then
+        echo "[UninstallApp] Failed, app not found. [app=${APP}]"
+        exit 1
+    fi
+    echo "[UninstallApp] Uninstall. [app=${APP}]"
+    export APP=$APP
+    if [ -e "$SCRIPT/gate.sh" ]; then
+        bash "${BASE}/../app/${APP}/gate.sh" -u
+    else
+        echo "[UninstallApp] Failed, gate.sh not found for app [app=${APP}]"
+        exit 1
+    fi
+}
+
 case $APP in
 "") usage && exit 1 ;;
 ls) list; exit 0 ;;
@@ -61,8 +79,16 @@ clean)
     clean; exit 0 ;;
 path)
     path ${*:2}; exit 0 ;;
+uninstall)
+    uninstall_app ${2}; exit 0 ;;
 *) ;;
 esac
+
+# Check if -u flag is passed for uninstall
+if [[ "${*:2}" == *"-u"* ]]; then
+    uninstall_app $APP
+    exit 0
+fi
 
 # presence check
 if [ ! -e "$SCRIPT" ]; then
